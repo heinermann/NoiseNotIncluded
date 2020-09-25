@@ -1,0 +1,3 @@
+[submodule "oxygen-icons-png"]
+	path = oxygen-icons-png
+	url = git@github.com:pasnox/oxygen-icons-png.git
