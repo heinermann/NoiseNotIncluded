@@ -4,12 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{64E95FF2-D3F6-45E2-AFCB-24A0AB193575}</ProjectGuid>
+    <ProjectGuid>{F15C21A7-3E65-41A8-B283-A75ED935527F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>NoiseNotIncluded</RootNamespace>
     <AssemblyName>NoiseNotIncluded</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,81 +35,198 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DynamicData, Version=6.16.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicData.6.16.6\lib\net461\DynamicData.dll</HintPath>
+    </Reference>
     <Reference Include="LibNoise, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LibNoise.0.2\lib\NET40\LibNoise.dll</HintPath>
+      <HintPath>..\packages\LibNoise.0.2\lib\NET45\LibNoise.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.9.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.10\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NodeNetwork, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodeNetwork.5.0.0\lib\net472\NodeNetwork.dll</HintPath>
+    </Reference>
+    <Reference Include="NodeNetworkToolkit, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodeNetworkToolkit.5.0.0\lib\net472\NodeNetworkToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Pharmacist.Common, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pharmacist.Common.1.8.1\lib\netstandard2.0\Pharmacist.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="ReactiveUI, Version=11.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.11.5.35\lib\net461\ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Events.WPF, Version=11.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.Events.WPF.11.5.35\lib\net472\ReactiveUI.Events.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.WPF, Version=11.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.WPF.11.5.35\lib\net472\ReactiveUI.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat, Version=9.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Splat.9.5.37\lib\net461\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat.Drawing, Version=9.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Splat.Drawing.9.5.37\lib\net461\Splat.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms.DataVisualization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=4.4.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.4.4.1\lib\net46\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Nodes\Combiners\AddNode.cs" />
+    <Compile Include="Nodes\CombinerNode.cs" />
+    <Compile Include="Nodes\Combiners\MaxNode.cs" />
+    <Compile Include="Nodes\Combiners\MinNode.cs" />
+    <Compile Include="Nodes\Combiners\MultiplyNode.cs" />
+    <Compile Include="Nodes\Combiners\PowerNode.cs" />
+    <Compile Include="Nodes\FilterNode.cs" />
+    <Compile Include="Nodes\Filters\BillowNode.cs" />
+    <Compile Include="Nodes\Filters\HeterogeneousMultiFractalNode.cs" />
+    <Compile Include="Nodes\Filters\HybridMultiFractalNode.cs" />
+    <Compile Include="Nodes\Filters\MultiFractalNode.cs" />
+    <Compile Include="Nodes\Filters\PipeNode.cs" />
+    <Compile Include="Nodes\Filters\RidgedMultiFractalNode.cs" />
+    <Compile Include="Nodes\Filters\SinFractalNode.cs" />
+    <Compile Include="Nodes\Filters\SumFractalNode.cs" />
+    <Compile Include="Nodes\Filters\VoronoiNode.cs" />
+    <Compile Include="Nodes\ModifierNode.cs" />
+    <Compile Include="Nodes\Modifiers\AbsNode.cs" />
+    <Compile Include="Nodes\Modifiers\ClampNode.cs" />
+    <Compile Include="Nodes\Modifiers\CurveNode.cs" />
+    <Compile Include="Nodes\Modifiers\ExponentNode.cs" />
+    <Compile Include="Nodes\Modifiers\InvertNode.cs" />
+    <Compile Include="Nodes\Modifiers\Scale2DNode.cs" />
+    <Compile Include="Nodes\Modifiers\ScaleBiasNode.cs" />
+    <Compile Include="Nodes\Modifiers\TerraceNode.cs" />
+    <Compile Include="Nodes\Other\ControlPointNode.cs" />
+    <Compile Include="Nodes\Other\FloatNode.cs" />
+    <Compile Include="Nodes\Other\TerminatorNode.cs" />
+    <Compile Include="Nodes\PrimitiveNode.cs" />
+    <Compile Include="Nodes\Primitives\BevinsGradientNode.cs" />
+    <Compile Include="Nodes\Primitives\BevinsValueNode.cs" />
+    <Compile Include="Nodes\Primitives\ConstantNode.cs" />
+    <Compile Include="Nodes\Primitives\CylindersNode.cs" />
+    <Compile Include="Nodes\Primitives\ImprovedPerlinNode.cs" />
+    <Compile Include="Nodes\Primitives\SimplexPerlinNode.cs" />
+    <Compile Include="Nodes\Primitives\SpheresNode.cs" />
+    <Compile Include="Nodes\SelectorNode.cs" />
+    <Compile Include="Nodes\Selectors\BlendNode.cs" />
+    <Compile Include="Nodes\Selectors\SelectNode.cs" />
+    <Compile Include="Nodes\TransformerNode.cs" />
+    <Compile Include="Nodes\Transformers\DisplaceNode.cs" />
+    <Compile Include="Nodes\Transformers\RotatePointNode.cs" />
+    <Compile Include="Nodes\Transformers\TurbulenceNode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.csproj">
-      <Project>{86fbcbda-52fd-4111-99f0-f6ebcc00ab06}</Project>
-      <Name>Crainiate.Diagramming.Forms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Crainiate.Diagramming\Crainiate.Diagramming.csproj">
-      <Project>{8feedda0-185d-4f31-9920-503c014f5526}</Project>
-      <Name>Crainiate.Diagramming</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\document-new.png" />
+    <Resource Include="Resources\document-open-recent.png" />
+    <Resource Include="Resources\document-open.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\document-open.png" />
+    <Resource Include="Resources\application-exit.png" />
+    <Resource Include="Resources\document-new.png" />
+    <Resource Include="Resources\document-save-as.png" />
+    <Resource Include="Resources\document-save.png" />
+    <Resource Include="Resources\edit-copy.png" />
+    <Resource Include="Resources\edit-cut.png" />
+    <Resource Include="Resources\edit-delete.png" />
+    <Resource Include="Resources\edit-paste.png" />
+    <Resource Include="Resources\edit-redo.png" />
+    <Resource Include="Resources\edit-rename.png" />
+    <Resource Include="Resources\edit-select-all.png" />
+    <Resource Include="Resources\edit-select.png" />
+    <Resource Include="Resources\edit-undo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document-save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document-save-as.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\application-exit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document-open-recent.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

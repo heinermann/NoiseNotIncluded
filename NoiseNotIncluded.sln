@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoiseNotIncluded", "NoiseNotIncluded\NoiseNotIncluded.csproj", "{64E95FF2-D3F6-45E2-AFCB-24A0AB193575}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crainiate.Diagramming", "Crainiate.Diagramming\Crainiate.Diagramming.csproj", "{8FEEDDA0-185D-4F31-9920-503C014F5526}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crainiate.Diagramming.Forms", "Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.csproj", "{86FBCBDA-52FD-4111-99F0-F6EBCC00AB06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoiseNotIncluded", "NoiseNotIncluded\NoiseNotIncluded.csproj", "{F15C21A7-3E65-41A8-B283-A75ED935527F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{64E95FF2-D3F6-45E2-AFCB-24A0AB193575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64E95FF2-D3F6-45E2-AFCB-24A0AB193575}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64E95FF2-D3F6-45E2-AFCB-24A0AB193575}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64E95FF2-D3F6-45E2-AFCB-24A0AB193575}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8FEEDDA0-185D-4F31-9920-503C014F5526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FEEDDA0-185D-4F31-9920-503C014F5526}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FEEDDA0-185D-4F31-9920-503C014F5526}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FEEDDA0-185D-4F31-9920-503C014F5526}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86FBCBDA-52FD-4111-99F0-F6EBCC00AB06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86FBCBDA-52FD-4111-99F0-F6EBCC00AB06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86FBCBDA-52FD-4111-99F0-F6EBCC00AB06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86FBCBDA-52FD-4111-99F0-F6EBCC00AB06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15C21A7-3E65-41A8-B283-A75ED935527F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15C21A7-3E65-41A8-B283-A75ED935527F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15C21A7-3E65-41A8-B283-A75ED935527F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15C21A7-3E65-41A8-B283-A75ED935527F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
