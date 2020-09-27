@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     static BevinsGradientNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<BevinsGradientNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<BevinsGradientNode>));
     }
   }
 }

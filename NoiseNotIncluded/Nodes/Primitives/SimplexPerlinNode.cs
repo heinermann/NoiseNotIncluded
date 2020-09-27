@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     static SimplexPerlinNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<SimplexPerlinNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<SimplexPerlinNode>));
     }
   }
 }

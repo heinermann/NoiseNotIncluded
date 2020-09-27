@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     static HybridMultiFractalNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<HybridMultiFractalNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<HybridMultiFractalNode>));
     }
   }
 }

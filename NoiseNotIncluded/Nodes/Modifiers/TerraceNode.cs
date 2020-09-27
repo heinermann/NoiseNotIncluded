@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     static TerraceNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<TerraceNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<TerraceNode>));
     }
   }
 }

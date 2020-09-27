@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     static PipeNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<PipeNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<PipeNode>));
     }
   }
 }

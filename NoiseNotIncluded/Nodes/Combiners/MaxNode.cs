@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
     
     static MaxNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<MaxNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<MaxNode>));
     }
   }
 }

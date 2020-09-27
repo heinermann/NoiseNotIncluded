@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     static AbsNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<AbsNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<AbsNode>));
     }
   }
 }

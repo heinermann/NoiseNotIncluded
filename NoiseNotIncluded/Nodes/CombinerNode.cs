@@ -3,6 +3,8 @@ using NodeNetwork.Toolkit.ValueNode;
 using DynamicData;
 using ReactiveUI;
 using System.Reactive.Linq;
+using NodeNetwork.Views;
+using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes.Combiners
 {
@@ -30,6 +32,13 @@ namespace NoiseNotIncluded.Nodes.Combiners
       Inputs.Add(RightInput);
 
       Outputs.Add(NodeOutput);
+    }
+
+    protected static NodeView GetNodeView()
+    {
+      var result = new NodeView();
+      result.Background = Brushes.Teal;
+      return result;
     }
   }
 }

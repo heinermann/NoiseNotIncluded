@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     static Scale2DNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<Scale2DNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<Scale2DNode>));
     }
   }
 }

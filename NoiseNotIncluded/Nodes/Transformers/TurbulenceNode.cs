@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Transformers
 
     static TurbulenceNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<TurbulenceNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<TurbulenceNode>));
     }
   }
 }

@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Transformers
 
     static DisplaceNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<DisplaceNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<DisplaceNode>));
     }
   }
 }

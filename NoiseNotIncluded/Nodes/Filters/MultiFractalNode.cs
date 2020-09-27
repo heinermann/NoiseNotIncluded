@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     static MultiFractalNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<MultiFractalNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<MultiFractalNode>));
     }
   }
 }

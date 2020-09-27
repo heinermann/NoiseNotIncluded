@@ -3,6 +3,7 @@ using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
 using NodeNetwork.Views;
 using ReactiveUI;
+using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes.Other
 {
@@ -22,7 +23,14 @@ namespace NoiseNotIncluded.Nodes.Other
 
     static TerminatorNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<TerminatorNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<TerminatorNode>));
+    }
+
+    static NodeView GetNodeView()
+    {
+      var result = new NodeView();
+      result.Background = Brushes.Black;
+      return result;
     }
   }
 }

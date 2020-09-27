@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     static ImprovedPerlinNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ImprovedPerlinNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<ImprovedPerlinNode>));
     }
   }
 }

@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     static SumFractalNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<SumFractalNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<SumFractalNode>));
     }
   }
 }

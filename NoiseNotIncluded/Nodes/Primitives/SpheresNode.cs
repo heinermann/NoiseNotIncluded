@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     static SpheresNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<SpheresNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<SpheresNode>));
     }
   }
 }

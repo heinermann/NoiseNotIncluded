@@ -1,7 +1,9 @@
 ﻿using DynamicData;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
+using NodeNetwork.Views;
 using System.Reactive.Linq;
+using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes
 {
@@ -31,6 +33,13 @@ namespace NoiseNotIncluded.Nodes
     {
       Inputs.Add(NodeInput);
       Outputs.Add(NodeOutput);
+    }
+
+    protected static NodeView GetNodeView()
+    {
+      var result = new NodeView();
+      result.Background = Brushes.Purple;
+      return result;
     }
   }
 }

@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     static HeterogeneousMultiFractalNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<HeterogeneousMultiFractalNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<HeterogeneousMultiFractalNode>));
     }
   }
 }

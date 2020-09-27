@@ -2,16 +2,23 @@
 using DynamicData;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
+using NodeNetwork.Views;
 using System.Reactive.Linq;
+using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes
 {
   public class TransformerNode : NodeViewModel
   {
+    // Power (TurbulenceNode)
+    // Rotation (x,y) (RotatePointNode)
+
     public ValueNodeInputViewModel<float> SelectNode { get; } = new ValueNodeInputViewModel<float>()
     {
       Name = "Select"
     };
+
+    // X/Y/Z is only for TurbulenceNode and DisplaceNode
     public ValueNodeInputViewModel<float> XNode { get; } = new ValueNodeInputViewModel<float>()
     {
       Name = "X"
@@ -39,6 +46,12 @@ namespace NoiseNotIncluded.Nodes
       Inputs.Add(ZNode);
 
       Outputs.Add(NodeOutput);
+    }
+    protected static NodeView GetNodeView()
+    {
+      var result = new NodeView();
+      result.Background = Brushes.Orange;
+      return result;
     }
   }
 }

@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     static PowerNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<PowerNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<PowerNode>));
     }
   }
 }

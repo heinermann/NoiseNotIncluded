@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     static MinNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<MinNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<MinNode>));
     }
   }
 }

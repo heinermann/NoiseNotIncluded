@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Selectors
 
     static BlendNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<BlendNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<BlendNode>));
     }
   }
 }

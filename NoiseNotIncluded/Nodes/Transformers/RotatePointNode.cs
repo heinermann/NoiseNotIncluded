@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Transformers
 
     static RotatePointNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<RotatePointNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<RotatePointNode>));
     }
   }
 }

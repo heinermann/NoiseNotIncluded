@@ -1,4 +1,5 @@
 ﻿
+using DynamicData;
 using NodeNetwork.Toolkit.NodeList;
 using NodeNetwork.ViewModels;
 using NoiseNotIncluded.Nodes.Combiners;
@@ -67,8 +68,12 @@ namespace NoiseNotIncluded
       
       ListViewModel.AddNodeType(() => new ControlPointNode());
       ListViewModel.AddNodeType(() => new FloatNode());
-      
-      ListViewModel.AddNodeType(() => new TerminatorNode());
+
+      //ListViewModel.AddNodeType(() => new TerminatorNode());
+
+      var terminatorNode = new TerminatorNode();
+      terminatorNode.CanBeRemovedByUser = false;
+      NetworkViewModel.Nodes.Add(terminatorNode);
 
     }
   }

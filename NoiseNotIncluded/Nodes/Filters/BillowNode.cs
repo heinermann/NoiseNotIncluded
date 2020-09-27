@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     static BillowNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<BillowNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<BillowNode>));
     }
   }
 }

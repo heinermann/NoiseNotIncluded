@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     static VoronoiNode()
     {
-      Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<VoronoiNode>));
+      Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<VoronoiNode>));
     }
   }
 }
