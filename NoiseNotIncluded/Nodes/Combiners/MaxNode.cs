@@ -1,4 +1,6 @@
-﻿using NodeNetwork.Views;
+﻿using LibNoise;
+using LibNoise.Combiner;
+using NodeNetwork.Views;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Combiners
@@ -13,6 +15,13 @@ namespace NoiseNotIncluded.Nodes.Combiners
     static MaxNode()
     {
       Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<MaxNode>));
+    }
+
+    protected override IModule GetNewOutput()
+    {
+      if (LeftInput.Value == null || RightInput.Value == null) return null;
+
+      return new Max(LeftInput.Value, RightInput.Value);
     }
   }
 }

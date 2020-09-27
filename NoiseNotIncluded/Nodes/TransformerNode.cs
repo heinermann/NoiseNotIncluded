@@ -49,9 +49,10 @@ namespace NoiseNotIncluded.Nodes
     }
     protected static NodeView GetNodeView()
     {
-      var result = new NodeView();
-      result.Background = Brushes.Orange;
-      return result;
+      return new NodeView
+      {
+        Background = Brushes.Orange
+      };
     }
   }
 }

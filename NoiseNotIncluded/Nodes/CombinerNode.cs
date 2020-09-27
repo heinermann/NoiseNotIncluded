@@ -5,29 +5,34 @@ using ReactiveUI;
 using System.Reactive.Linq;
 using NodeNetwork.Views;
 using System.Windows.Media;
+using LibNoise;
 
 namespace NoiseNotIncluded.Nodes.Combiners
 {
-  public class CombinerNode : NodeViewModel
+  public abstract class CombinerNode : NodeViewModel
   {
-    public ValueNodeInputViewModel<float> LeftInput { get; } = new ValueNodeInputViewModel<float>()
+    public ValueNodeInputViewModel<IModule> LeftInput { get; } = new ValueNodeInputViewModel<IModule>()
     {
       Name = "Left"
     };
 
-    public ValueNodeInputViewModel<float> RightInput { get; } = new ValueNodeInputViewModel<float>()
+    public ValueNodeInputViewModel<IModule> RightInput { get; } = new ValueNodeInputViewModel<IModule>()
     {
       Name = "Right"
     };
 
-    public ValueNodeOutputViewModel<float> NodeOutput { get; } = new ValueNodeOutputViewModel<float>()
-    {
-      Name = "Output",
-      Value = Observable.Return(1.0f)
-    };
+    public ValueNodeOutputViewModel<IModule> NodeOutput { get; }
 
     public CombinerNode()
     {
+      NodeOutput = new ValueNodeOutputViewModel<IModule>()
+      {
+        Name = "Output",
+        Value = this.WhenAnyObservable(vm => vm.LeftInput.ValueChanged, vm => vm.RightInput.ValueChanged)
+                  .Select(v => GetNewOutput())
+      };
+
+
       Inputs.Add(LeftInput);
       Inputs.Add(RightInput);
 
@@ -36,9 +41,12 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     protected static NodeView GetNodeView()
     {
-      var result = new NodeView();
-      result.Background = Brushes.Teal;
-      return result;
+      return new NodeView
+      {
+        Background = Brushes.Teal
+      };
     }
+
+    protected abstract IModule GetNewOutput();
   }
 }

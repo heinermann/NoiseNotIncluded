@@ -1,4 +1,5 @@
 ﻿using DynamicData;
+using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
 using NodeNetwork.Views;
@@ -9,7 +10,7 @@ namespace NoiseNotIncluded.Nodes.Other
 {
   public class TerminatorNode : NodeViewModel
   {
-    public ValueNodeInputViewModel<float> NodeInput { get; } = new ValueNodeInputViewModel<float>()
+    public ValueNodeInputViewModel<IModule> NodeInput { get; } = new ValueNodeInputViewModel<IModule>()
     {
       Name = "Input"
     };
@@ -28,9 +29,10 @@ namespace NoiseNotIncluded.Nodes.Other
 
     static NodeView GetNodeView()
     {
-      var result = new NodeView();
-      result.Background = Brushes.Black;
-      return result;
+      return new NodeView
+      {
+        Background = Brushes.Black
+      };
     }
   }
 }
