@@ -7,5 +7,5 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-  <xctk:SingleUpDown Name="UpDown" ParsingNumberStyle="Float" ClipValueToMinMax="True" DefaultValue="0.0" DisplayDefaultValueOnEmptyText="True" ShowButtonSpinner="False" MinWidth="80" MaxWidth="80" />
+  <xctk:SingleUpDown Name="UpDown" ParsingNumberStyle="Float" ClipValueToMinMax="True" DefaultValue="0.0" DisplayDefaultValueOnEmptyText="True" MaxLength="10" MinWidth="80" MaxWidth="80" ShowButtonSpinner="False" />
 </UserControl>
