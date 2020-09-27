@@ -25,14 +25,13 @@ namespace NoiseNotIncluded.Nodes
     public ValueNodeInputViewModel<int?> Seed { get; } = new ValueNodeInputViewModel<int?>()
     {
       Name = "Seed",
-      Editor = new IntegerValueEditorViewModel()
+      Editor = new IntegerEditorViewModel()
     };
 
-    // TODO: This should be float
-    public ValueNodeInputViewModel<int?> Offset { get; } = new ValueNodeInputViewModel<int?>()
+    public ValueNodeInputViewModel<float?> Offset { get; } = new ValueNodeInputViewModel<float?>()
     {
       Name = "Offset",
-      Editor = new IntegerValueEditorViewModel()
+      Editor = new FloatEditorViewModel()
     };
 
     public ValueNodeOutputViewModel<IModule> NodeOutput { get; }

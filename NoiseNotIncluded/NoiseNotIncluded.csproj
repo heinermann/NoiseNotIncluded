@@ -156,19 +156,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NodeNetwork\Views\IntegerValueEditorView.xaml">
+    <Page Include="NodeNetwork\Views\FloatEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NodeNetwork\Views\IntegerEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NodeNetwork\ViewModels\EnumEditorViewModel.cs" />
-    <Compile Include="NodeNetwork\ViewModels\IntegerValueEditorViewModel.cs" />
+    <Compile Include="NodeNetwork\ViewModels\FloatEditorViewModel.cs" />
+    <Compile Include="NodeNetwork\ViewModels\IntegerEditorViewModel.cs" />
     <Compile Include="NodeNetwork\Views\EnumEditorView.xaml.cs">
       <DependentUpon>EnumEditorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NodeNetwork\Views\IntegerValueEditorView.xaml.cs">
-      <DependentUpon>IntegerValueEditorView.xaml</DependentUpon>
+    <Compile Include="NodeNetwork\Views\FloatEditorView.xaml.cs">
+      <DependentUpon>FloatEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NodeNetwork\Views\IntegerEditorView.xaml.cs">
+      <DependentUpon>IntegerEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Nodes\Combiners\AddNode.cs" />
     <Compile Include="Nodes\CombinerNode.cs" />

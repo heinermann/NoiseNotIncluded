@@ -5,26 +5,26 @@ using ReactiveUI;
 
 namespace NodeNetworkExtensions.Views
 {
-  public partial class IntegerValueEditorView : IViewFor<IntegerValueEditorViewModel>
+  public partial class IntegerEditorView : IViewFor<IntegerEditorViewModel>
   {
     #region ViewModel
     public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
-        typeof(IntegerValueEditorViewModel), typeof(IntegerValueEditorView), new PropertyMetadata(null));
+        typeof(IntegerEditorViewModel), typeof(IntegerEditorView), new PropertyMetadata(null));
 
-    public IntegerValueEditorViewModel ViewModel
+    public IntegerEditorViewModel ViewModel
     {
-      get => (IntegerValueEditorViewModel)GetValue(ViewModelProperty);
+      get => (IntegerEditorViewModel)GetValue(ViewModelProperty);
       set => SetValue(ViewModelProperty, value);
     }
 
     object IViewFor.ViewModel
     {
       get => ViewModel;
-      set => ViewModel = (IntegerValueEditorViewModel)value;
+      set => ViewModel = (IntegerEditorViewModel)value;
     }
     #endregion
 
-    public IntegerValueEditorView()
+    public IntegerEditorView()
     {
       InitializeComponent();
 
