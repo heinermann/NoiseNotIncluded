@@ -1,11 +1,11 @@
-﻿
-using DynamicData;
+﻿using DynamicData;
 using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
 using NodeNetwork.Views;
 using NodeNetworkExtensions.ViewModels;
-using System.Reactive.Linq;
+using NoiseNotIncluded.Util;
+using System;
 using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes
@@ -41,7 +41,7 @@ namespace NoiseNotIncluded.Nodes
       NodeOutput = new ValueNodeOutputViewModel<IModule>()
       {
         Name = "Output",
-        Value = Observable.Return(GetNewOutput()) // TODO: Make this update based on changes
+        Value = this.WhenAnyObservable(x => x.Quality.ValueChanged, x => x.Seed.ValueChanged, x => x.Offset.ValueChanged, (o1, o2, o3) => GetNewOutput())
       };
 
       Quality.Port.IsVisible = false;
