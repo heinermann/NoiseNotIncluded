@@ -1,5 +1,7 @@
 ﻿
 using DynamicData;
+using NodeNetwork;
+using NodeNetwork.Toolkit;
 using NodeNetwork.Toolkit.NodeList;
 using NodeNetwork.ViewModels;
 using NoiseNotIncluded.Nodes.Combiners;
@@ -10,6 +12,7 @@ using NoiseNotIncluded.Nodes.Primitives;
 using NoiseNotIncluded.Nodes.Selectors;
 using NoiseNotIncluded.Nodes.Transformers;
 using ReactiveUI;
+using System.Linq;
 
 namespace NoiseNotIncluded
 {
@@ -26,6 +29,17 @@ namespace NoiseNotIncluded
 
     public MainViewModel()
     {
+      NetworkViewModel.Validator = network =>
+      {
+        bool containsLoops = GraphAlgorithms.FindLoops(network).Any();
+        if (containsLoops)
+        {
+          return new NetworkValidationResult(false, false, new ErrorMessageViewModel("Network contains loops!"));
+        }
+
+        return new NetworkValidationResult(true, true, null);
+      };
+
       ListViewModel.AddNodeType(() => new AddNode());
       ListViewModel.AddNodeType(() => new MaxNode());
       ListViewModel.AddNodeType(() => new MinNode());
