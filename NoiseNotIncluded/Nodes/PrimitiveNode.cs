@@ -34,11 +34,11 @@ namespace NoiseNotIncluded.Nodes
       Editor = new FloatEditorViewModel()
     };
 
-    public ValueNodeOutputViewModel<IModule> NodeOutput { get; }
+    public OutputPreviewModel NodeOutput { get; }
 
     public PrimitiveNode()
     {
-      NodeOutput = new ValueNodeOutputViewModel<IModule>()
+      NodeOutput = new OutputPreviewModel()
       {
         Name = "Output",
         Value = this.WhenAnyObservable(x => x.Quality.ValueChanged, x => x.Seed.ValueChanged, x => x.Offset.ValueChanged, (o1, o2, o3) => GetNewOutput())

@@ -3,7 +3,6 @@ using LibNoise;
 using LibNoise.Primitive;
 using ReactiveUI;
 using System;
-using System.Windows;
 
 namespace NoiseNotIncluded.Nodes.Primitives
 {

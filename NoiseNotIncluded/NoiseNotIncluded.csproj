@@ -139,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="NodeNetworkExtensions\ViewModels\OutputPreviewModel.cs" />
+    <Compile Include="NodeNetworkExtensions\Views\OutputPreviewView.xaml.cs">
+      <DependentUpon>OutputPreviewView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\Observables.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NodeNetworkExtensions\Views\IntegerEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NodeNetworkExtensions\Views\OutputPreviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
