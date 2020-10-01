@@ -43,41 +43,43 @@ namespace NodeNetworkExtensions.Views
     {
       if (module == null)
       {
-        pixels.Initialize();
+        //pixels.Initialize();
+        Preview.Visibility = Visibility.Collapsed;
+        return;
       }
-      else
+
+      // First loop, obtain the values and determine min/max
+      float min = float.MaxValue, max = float.MinValue;
+      for (int y = 0; y < IMG_HEIGHT; ++y)
       {
-        // First loop, obtain the values and determine min/max
-        float min = float.MaxValue, max = float.MinValue;
-        for (int y = 0; y < IMG_HEIGHT; ++y)
+        for (int x = 0; x < IMG_WIDTH; ++x)
         {
-          for (int x = 0; x < IMG_WIDTH; ++x)
-          {
-            float pixelValue = (module as IModule3D).GetValue(x, 0, y);
-            pixelValues[x + y * IMG_WIDTH] = pixelValue;
+          float pixelValue = (module as IModule3D).GetValue(x, 0, y);
+          pixelValues[x + y * IMG_WIDTH] = pixelValue;
 
-            if (pixelValue < min) min = pixelValue;
-            if (pixelValue > max) max = pixelValue;
-          }
+          if (pixelValue < min) min = pixelValue;
+          if (pixelValue > max) max = pixelValue;
         }
+      }
 
-        // Second loop, write pixel info based on the min/max
-        float range = max - min;
-        for (int y = 0; y < IMG_HEIGHT; ++y)
+      // Second loop, write pixel info based on the min/max
+      float range = max - min;
+      for (int y = 0; y < IMG_HEIGHT; ++y)
+      {
+        for (int x = 0; x < IMG_WIDTH; ++x)
         {
-          for (int x = 0; x < IMG_WIDTH; ++x)
-          {
 
-            byte pixelValue = (byte)Math.Floor((pixelValues[x + y * IMG_WIDTH] - min) / range * 255);
-            pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP] = pixelValue;
-            pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP + 1] = pixelValue;
-            pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP + 2] = pixelValue;
-            pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP + 3] = 0xFF;
-          }
+          byte pixelValue = (byte)Math.Floor((pixelValues[x + y * IMG_WIDTH] - min) / range * 255);
+          pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP] = pixelValue;
+          pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP + 1] = pixelValue;
+          pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP + 2] = pixelValue;
+          pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP + 3] = 0xFF;
         }
       }
 
       previewImg.WritePixels(imgRect, pixels, IMG_STRIDE, 0);
+
+      Preview.Visibility = Visibility.Visible;
     }
 
     public OutputPreviewView()
