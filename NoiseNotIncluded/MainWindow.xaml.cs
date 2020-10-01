@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using NodeNetwork.Toolkit.Layout.ForceDirected;
+using ReactiveUI;
 using System.Reactive.Disposables;
 using System.Windows;
 
@@ -43,6 +44,16 @@ namespace NoiseNotIncluded
     private void Exit_Clicked(object sender, RoutedEventArgs e)
     {
       Close();
+    }
+
+    private void AutoLayout_Click(object sender, RoutedEventArgs e)
+    {
+      ForceDirectedLayouter layouter = new ForceDirectedLayouter();
+      var config = new Configuration
+      {
+        Network = ViewModel.NetworkViewModel
+      };
+      layouter.Layout(config, 50000);
     }
   }
 }
