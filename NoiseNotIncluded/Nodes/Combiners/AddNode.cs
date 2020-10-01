@@ -10,8 +10,6 @@ namespace NoiseNotIncluded.Nodes.Combiners
     public AddNode() : base()
     {
       Name = "Add";
-
-
     }
 
     static AddNode()

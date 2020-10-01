@@ -6,6 +6,8 @@ using System.Reactive.Linq;
 using NodeNetwork.Views;
 using System.Windows.Media;
 using LibNoise;
+using NodeNetworkExtensions.ViewModels;
+using System;
 
 namespace NoiseNotIncluded.Nodes.Combiners
 {
@@ -23,15 +25,19 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     public ValueNodeOutputViewModel<IModule> NodeOutput { get; }
 
+    OutputPreviewModel OutputPreview { get; } = new OutputPreviewModel();
+
     public CombinerNode()
     {
       NodeOutput = new ValueNodeOutputViewModel<IModule>()
       {
         Name = "Output",
         Value = this.WhenAnyObservable(vm => vm.LeftInput.ValueChanged, vm => vm.RightInput.ValueChanged)
-                  .Select(v => GetNewOutput())
+                  .Select(v => GetNewOutput()),
+        Editor = OutputPreview
       };
 
+      NodeOutput.Value.Subscribe(module => OutputPreview.Value = module);
 
       Inputs.Add(LeftInput);
       Inputs.Add(RightInput);
