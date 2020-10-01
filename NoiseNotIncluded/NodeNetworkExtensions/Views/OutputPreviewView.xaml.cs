@@ -88,7 +88,8 @@ namespace NodeNetworkExtensions.Views
       Preview.Source = previewImg;
 
       this.WhenActivated(d => {
-        ViewModel.Value.Subscribe(UpdatePreview).DisposeWith(d);
+        
+        ViewModel.ValueChanged.Subscribe(UpdatePreview).DisposeWith(d);
       });
     }
   }
