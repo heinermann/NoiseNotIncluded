@@ -1,38 +1,26 @@
-﻿
-using DynamicData;
+﻿using DynamicData;
+using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
-using NodeNetwork.ViewModels;
 using NodeNetwork.Views;
+using NoiseNotIncluded.Util;
 using System.Reactive.Linq;
 using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes
 {
-  public class ModifierNode : NodeViewModel
+  public abstract class ModifierNode : NodeWithPreview
   {
-    // Lower (Clamp)
-    // Upper (Clamp)
+    // Lower, Upper (Clamp)
     // Exponent (Exponent)
     // Invert (unused)
-    // Scale (ScaleBias)
-    // Bias (ScaleBias)
+    // Scale, Bias (ScaleBias)
     // Scale2D (with x, y) (Scale2D)
 
-    public ValueNodeInputViewModel<float> NodeInput { get; } = new ValueNodeInputViewModel<float>()
-    {
-      Name = "Input"
-    };
+    public ValueNodeInputViewModel<IModule> NodeInput { get; } = NodeHelpers.CreateNodeInput("Input");
 
-    public ValueNodeOutputViewModel<float> NodeOutput { get; } = new ValueNodeOutputViewModel<float>()
-    {
-      Name = "Output",
-      Value = Observable.Return(1.0f)
-    };
-
-    public ModifierNode()
+    public ModifierNode() : base()
     {
       Inputs.Add(NodeInput);
-      Outputs.Add(NodeOutput);
     }
 
     protected static NodeView GetNodeView()

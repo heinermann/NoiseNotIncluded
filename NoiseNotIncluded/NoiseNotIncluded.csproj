@@ -148,7 +148,6 @@
     </Compile>
     <Compile Include="Nodes\NodeWithPreview.cs" />
     <Compile Include="Util\NodeHelpers.cs" />
-    <Compile Include="Util\Observables.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

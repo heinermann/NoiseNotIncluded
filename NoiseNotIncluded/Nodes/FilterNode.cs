@@ -3,6 +3,7 @@ using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.Views;
 using NoiseNotIncluded.Util;
+using ReactiveUI;
 using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes
@@ -28,12 +29,12 @@ namespace NoiseNotIncluded.Nodes
     public FilterNode()
     {
       RegisterOutputValue(this.WhenAnyObservable(
+        v => v.NodeInput.ValueChanged,
         v => v.Frequency.ValueChanged,
         v => v.Lacunarity.ValueChanged,
         v => v.Octaves.ValueChanged,
         v => v.Offset.ValueChanged,
         v => v.Gain.ValueChanged,
-        v => v.NodeInput.ValueChanged,
         (_1, _2, _3, _4, _5, _6) => GetNewFilterOutput()));
 
       Inputs.Add(NodeInput);

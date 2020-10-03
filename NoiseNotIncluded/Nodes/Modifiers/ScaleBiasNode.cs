@@ -1,4 +1,5 @@
-﻿using NodeNetwork.Views;
+﻿using LibNoise;
+using NodeNetwork.Views;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Modifiers
@@ -13,6 +14,11 @@ namespace NoiseNotIncluded.Nodes.Modifiers
     static ScaleBiasNode()
     {
       Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<ScaleBiasNode>));
+    }
+
+    protected override IModule GetNewOutput()
+    {
+      return null;
     }
   }
 }

@@ -1,9 +1,8 @@
-﻿using DynamicData;
-using LibNoise;
+﻿using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.Views;
 using NoiseNotIncluded.Util;
-using System;
+using ReactiveUI;
 using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes
@@ -20,7 +19,11 @@ namespace NoiseNotIncluded.Nodes
 
     public PrimitiveNode() : base()
     {
-      RegisterOutputValue(this.WhenAnyObservable(x => x.Quality.ValueChanged, x => x.Seed.ValueChanged, x => x.Offset.ValueChanged, (o1, o2, o3) => GetNewOutput()));
+      RegisterOutputValue(this.WhenAnyObservable(
+        x => x.Quality.ValueChanged,
+        x => x.Seed.ValueChanged,
+        x => x.Offset.ValueChanged,
+        (o1, o2, o3) => GetNewOutput()));
     }
 
     protected static NodeView GetNodeView()
