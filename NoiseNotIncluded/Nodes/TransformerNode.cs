@@ -12,6 +12,7 @@ namespace NoiseNotIncluded.Nodes
   {
     // Power (TurbulenceNode)
     // Rotation (x,y) (RotatePointNode)
+    // xModule, yModule, ZModule
 
     public ValueNodeInputViewModel<float> SelectNode { get; } = new ValueNodeInputViewModel<float>()
     {

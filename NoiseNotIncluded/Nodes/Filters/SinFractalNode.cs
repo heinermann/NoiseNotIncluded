@@ -1,18 +1,31 @@
-﻿using NodeNetwork.Views;
+﻿using DynamicData;
+using LibNoise;
+using LibNoise.Filter;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Filters
 {
   public class SinFractalNode : FilterNode
   {
+    // Lacunarity, Frequency, Octaves
+
     public SinFractalNode() : base()
     {
       Name = "SinFractal";
+
+      Inputs.Add(Lacunarity);
+      Inputs.Add(Frequency);
+      Inputs.Add(Octaves);
     }
 
     static SinFractalNode()
     {
       Splat.Locator.CurrentMutable.Register(() => GetNodeView(), typeof(IViewFor<SinFractalNode>));
+    }
+
+    protected override IModule GetNewOutput()
+    {
+      return new SinFractal();
     }
   }
 }

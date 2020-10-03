@@ -1,6 +1,5 @@
 ﻿using LibNoise;
 using LibNoise.Combiner;
-using NodeNetwork.Views;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Combiners
