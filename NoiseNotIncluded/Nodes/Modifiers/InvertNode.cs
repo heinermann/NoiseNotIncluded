@@ -1,6 +1,7 @@
 ﻿using LibNoise;
-using NodeNetwork.Views;
+using LibNoise.Modifier;
 using ReactiveUI;
+using System.Reactive.Linq;
 
 namespace NoiseNotIncluded.Nodes.Modifiers
 {
@@ -9,6 +10,8 @@ namespace NoiseNotIncluded.Nodes.Modifiers
     public InvertNode() : base()
     {
       Name = "Invert";
+
+      RegisterOutputValue(NodeInput.ValueChanged.Select(v => GetNewOutput()));
     }
 
     static InvertNode()
@@ -18,7 +21,8 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     protected override IModule GetNewOutput()
     {
-      return null;
+      if (NodeInput.Value == null) return null;
+      return new Invert(NodeInput.Value);
     }
   }
 }

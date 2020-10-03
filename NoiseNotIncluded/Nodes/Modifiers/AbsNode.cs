@@ -7,7 +7,6 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 {
   public class AbsNode : ModifierNode
   {
-
     public AbsNode() : base()
     {
       Name = "Abs";

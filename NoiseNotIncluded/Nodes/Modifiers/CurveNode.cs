@@ -1,9 +1,9 @@
 ﻿using LibNoise;
-using NodeNetwork.Views;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Modifiers
 {
+  // TODO controlPoints
   public class CurveNode : ModifierNode
   {
     public CurveNode() : base()

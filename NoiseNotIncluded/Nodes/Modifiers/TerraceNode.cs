@@ -1,9 +1,9 @@
 ﻿using LibNoise;
-using NodeNetwork.Views;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Modifiers
 {
+  // TODO: ControlFloats
   public class TerraceNode : ModifierNode
   {
     public TerraceNode() : base()
