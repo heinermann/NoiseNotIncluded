@@ -2,6 +2,7 @@
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetworkExtensions.ViewModels;
 using System;
+using System.Numerics;
 
 namespace NoiseNotIncluded.Util
 {
@@ -30,8 +31,25 @@ namespace NoiseNotIncluded.Util
       {
         Value = defaultValue
       };
-      
+
       var result = new ValueNodeInputViewModel<float?>()
+      {
+        Name = name,
+        Editor = editor,
+        MaxConnections = 0
+      };
+      result.Port.IsVisible = false;
+      return result;
+    }
+
+    public static ValueNodeInputViewModel<Vector2> CreateVector2Editor(string name, float defaultX = 1f, float defaultY = 1f)
+    {
+      var editor = new Vector2EditorViewModel()
+      {
+        Value = new Vector2(defaultX, defaultY)
+      };
+
+      var result = new ValueNodeInputViewModel<Vector2>()
       {
         Name = name,
         Editor = editor,

@@ -143,11 +143,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="NodeNetworkExtensions\ViewModels\OutputPreviewModel.cs" />
+    <Compile Include="NodeNetworkExtensions\ViewModels\Vector2EditorViewModel.cs" />
     <Compile Include="NodeNetworkExtensions\Views\OutputPreviewView.xaml.cs">
       <DependentUpon>OutputPreviewView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NodeNetworkExtensions\Views\Vector2EditorView.xaml.cs">
+      <DependentUpon>Vector2EditorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nodes\Modifiers\Scale2d.cs" />
-    <Compile Include="Nodes\Modifiers\Vector2.cs" />
     <Compile Include="Nodes\NodeWithPreview.cs" />
     <Compile Include="Util\NodeHelpers.cs" />
     <Page Include="MainWindow.xaml">
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NodeNetworkExtensions\Views\OutputPreviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NodeNetworkExtensions\Views\Vector2EditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,5 +1,6 @@
 ﻿using DynamicData;
 using LibNoise;
+using LibNoise.Modifier;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.Views;
 using NoiseNotIncluded.Util;
@@ -18,11 +19,11 @@ namespace NoiseNotIncluded.Nodes
     // 
     // Uses Primitive3D
 
-    public ValueNodeInputViewModel<float?> Frequency { get; } = NodeHelpers.CreateFloatEditor("Frequency", 1f);
-    public ValueNodeInputViewModel<float?> Lacunarity { get; } = NodeHelpers.CreateFloatEditor("Lacunarity", 2f);
-    public ValueNodeInputViewModel<int?> Octaves { get; } = NodeHelpers.CreateIntEditor("Octaves", 6);
+    public ValueNodeInputViewModel<float?> Frequency { get; } = NodeHelpers.CreateFloatEditor("Frequency", 10f);
+    public ValueNodeInputViewModel<float?> Lacunarity { get; } = NodeHelpers.CreateFloatEditor("Lacunarity", 3f);
+    public ValueNodeInputViewModel<int?> Octaves { get; } = NodeHelpers.CreateIntEditor("Octaves", 10);
     public ValueNodeInputViewModel<float?> Offset { get; } = NodeHelpers.CreateFloatEditor("Offset", 1f);
-    public ValueNodeInputViewModel<float?> Gain { get; } = NodeHelpers.CreateFloatEditor("Gain", 2f);
+    public ValueNodeInputViewModel<float?> Gain { get; } = NodeHelpers.CreateFloatEditor("Gain", 0f);
 
     public ValueNodeInputViewModel<IModule> NodeInput { get; } = NodeHelpers.CreateNodeInput("Input");
 
@@ -54,13 +55,13 @@ namespace NoiseNotIncluded.Nodes
       if (Lacunarity.Value == null || Frequency.Value == null || Octaves.Value == null) return null;
 
       FilterModule filter = GetNewOutput() as FilterModule;
-      filter.Frequency = Frequency.Value.GetValueOrDefault(1f);
-      filter.Lacunarity = Lacunarity.Value.GetValueOrDefault(2f);
-      filter.OctaveCount = Octaves.Value.GetValueOrDefault(6);
+      filter.Frequency = Frequency.Value.GetValueOrDefault(10f);
+      filter.Lacunarity = Lacunarity.Value.GetValueOrDefault(3f);
+      filter.OctaveCount = Octaves.Value.GetValueOrDefault(10);
       filter.Offset = Offset.Value.GetValueOrDefault(1f);
-      filter.Gain = Gain.Value.GetValueOrDefault(2f);
-
-      filter.Primitive3D = NodeInput.Value as IModule3D;
+      filter.Gain = Gain.Value.GetValueOrDefault(0);
+      
+      filter.Primitive3D = new Cache(NodeInput.Value);
       return filter;
     }
   }

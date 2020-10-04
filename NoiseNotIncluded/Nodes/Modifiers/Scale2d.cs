@@ -1,5 +1,5 @@
-﻿
-using LibNoise;
+﻿using LibNoise;
+using System.Numerics;
 
 namespace NoiseNotIncluded.Nodes.Modifiers
 {
@@ -18,7 +18,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public float GetValue(float x, float y, float z)
     {
-      return ((IModule3D)this.SourceModule).GetValue(x * Scale.x, y, z * Scale.y);
+      return ((IModule3D)this.SourceModule).GetValue(x * Scale.X, y, z * Scale.Y);
     }
   }
 }
