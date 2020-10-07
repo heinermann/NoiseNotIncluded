@@ -152,6 +152,7 @@
     </Compile>
     <Compile Include="Nodes\Modifiers\Scale2d.cs" />
     <Compile Include="Nodes\NodeWithPreview.cs" />
+    <Compile Include="Util\LibNoiseHelpers.cs" />
     <Compile Include="Util\NodeHelpers.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
