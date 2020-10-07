@@ -154,6 +154,22 @@
     <Compile Include="Nodes\NodeWithPreview.cs" />
     <Compile Include="Util\LibNoiseHelpers.cs" />
     <Compile Include="Util\NodeHelpers.cs" />
+    <Compile Include="Yaml\Biome\BiomeFile.cs" />
+    <Compile Include="Yaml\Biome\ElementGradient.cs" />
+    <Compile Include="Yaml\Biome\Overrides.cs" />
+    <Compile Include="Yaml\Noise\Link.cs" />
+    <Compile Include="Yaml\Noise\NodeLink.cs" />
+    <Compile Include="Yaml\Noise\Nodes\Combiner.cs" />
+    <Compile Include="Yaml\Noise\Nodes\ControlPointList.cs" />
+    <Compile Include="Yaml\Noise\Nodes\Filter.cs" />
+    <Compile Include="Yaml\Noise\Nodes\FloatList.cs" />
+    <Compile Include="Yaml\Noise\Nodes\Modifier.cs" />
+    <Compile Include="Yaml\Noise\Nodes\NoiseBase.cs" />
+    <Compile Include="Yaml\Noise\Nodes\Selector.cs" />
+    <Compile Include="Yaml\Noise\Nodes\Transformer.cs" />
+    <Compile Include="Yaml\Noise\NoiseFile.cs" />
+    <Compile Include="Yaml\Noise\Nodes\Primitive.cs" />
+    <Compile Include="Yaml\Noise\SampleSettings.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
