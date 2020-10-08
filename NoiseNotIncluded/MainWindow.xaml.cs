@@ -133,21 +133,20 @@ namespace NoiseNotIncluded
             var filter = filters[link.target.name] as FilterNode;
             ViewModel.AddConnection(filter.NodeInput, source0);
             break;
-            /*
           case Link.Type.Transformer:
             var transformer = transformers[link.target.name] as TransformerNode;
             ViewModel.AddConnection(transformer.SelectNode, source0);
             ViewModel.AddConnection(transformer.XNode, source1);
             ViewModel.AddConnection(transformer.YNode, source2);
             ViewModel.AddConnection(transformer.ZNode, source3);
-            break;*/
+            break;
           case Link.Type.Selector:
             // TODO
-            break;/*
+            break;
           case Link.Type.Modifier:
             var modifier = modifiers[link.target.name] as ModifierNode;
             ViewModel.AddConnection(modifier.NodeInput, source0);
-            break;*/
+            break;
           case Link.Type.Combiner:
             var combiner = combiners[link.target.name] as CombinerNode;
             ViewModel.AddConnection(combiner.LeftInput, source0);
