@@ -85,10 +85,13 @@ namespace NoiseNotIncluded
 
       //ListViewModel.AddNodeType(() => new TerminatorNode());
 
-      var terminatorNode = new TerminatorNode();
-      terminatorNode.CanBeRemovedByUser = false;
-      NetworkViewModel.Nodes.Add(terminatorNode);
+      NetworkViewModel.Nodes.Add(new TerminatorNode());
 
+    }
+
+    public void AddConnection(NodeInputViewModel input, NodeOutputViewModel output)
+    {
+      NetworkViewModel.Connections.Add(new ConnectionViewModel(NetworkViewModel, input, output));
     }
   }
 }

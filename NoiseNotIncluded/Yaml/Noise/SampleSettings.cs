@@ -1,9 +1,10 @@
 ﻿
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using System.Numerics;
 
 namespace NoiseNotIncluded.Yaml
 {
-  public class SampleSettings
+  public class SampleSettings : NoiseBase
   {
     public float zoom { get; set; } = 0.1f;
     public bool normalise { get; set; } = false;

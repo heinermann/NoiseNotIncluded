@@ -1,4 +1,8 @@
-﻿using System.Numerics;
+﻿using NodeNetwork.Toolkit.ValueNode;
+using NodeNetwork.ViewModels;
+using NoiseNotIncluded.Nodes;
+using NoiseNotIncluded.Nodes.Modifiers;
+using System.Numerics;
 
 namespace NoiseNotIncluded.Yaml.Noise.Nodes
 {
@@ -25,5 +29,54 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
 	public float scale { get; set; }
 	public float bias { get; set; }
 	public Vector2 scale2d { get; set; }
+
+    public NodeViewModel CreateModel()
+    {
+      ModifierNode result = null;
+      switch (modifyType)
+      {
+        case ModifyType.Abs:
+          result = new AbsNode();
+          break;
+        case ModifyType.Clamp:
+          var clampNode = new ClampNode();
+          (clampNode.Lower.Editor as ValueEditorViewModel<float?>).Value = lower;
+          (clampNode.Upper.Editor as ValueEditorViewModel<float?>).Value = upper;
+          result = clampNode;
+          break;
+        case ModifyType.Exponent:
+          var exponentNode = new ExponentNode();
+          (exponentNode.Exponent.Editor as ValueEditorViewModel<float?>).Value = exponent;
+          result = exponentNode;
+          break;
+        case ModifyType.Invert:
+          result = new InvertNode();
+          break;
+        case ModifyType.ScaleBias:
+          var scaleBiasNode = new ScaleBiasNode();
+          (scaleBiasNode.Scale.Editor as ValueEditorViewModel<float?>).Value = scale;
+          (scaleBiasNode.Bias.Editor as ValueEditorViewModel<float?>).Value = bias;
+          result = scaleBiasNode;
+          break;
+        case ModifyType.Scale2d:
+          var scale2dNode = new Scale2DNode();
+          (scale2dNode.Scale2d.Editor as ValueEditorViewModel<Vector2>).Value = scale2d;
+          result = scale2dNode;
+          break;
+        case ModifyType.Curve:
+          result = new CurveNode();
+          // TODO
+          break;
+        case ModifyType.Terrace:
+          result = new TerraceNode();
+          // TODO
+          break;
+      }
+
+      result.Name = name;
+      result.Position = pos;
+
+      return result;
+    }
   }
 }

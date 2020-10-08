@@ -25,6 +25,7 @@ namespace NoiseNotIncluded.Nodes.Other
     public TerminatorNode()
     {
       Name = "TERMINATOR";
+      CanBeRemovedByUser = false;
 
       NodeOutput = new NodeOutputViewModel
       {

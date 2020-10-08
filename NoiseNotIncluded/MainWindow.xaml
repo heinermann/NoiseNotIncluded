@@ -16,7 +16,7 @@
               <Image Source="Resources/document-new.png"/>
             </MenuItem.Icon>
           </MenuItem>
-          <MenuItem Header="_Open" InputGestureText="Ctrl+O">
+          <MenuItem Header="_Open" InputGestureText="Ctrl+O" Click="Open_Clicked">
             <MenuItem.Icon>
               <Image Source="Resources/document-open.png"/>
             </MenuItem.Icon>
