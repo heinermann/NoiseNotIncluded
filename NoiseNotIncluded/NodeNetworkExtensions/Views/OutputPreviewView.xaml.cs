@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LibNoise;
+using LibNoise.Builder;
 using NodeNetworkExtensions.ViewModels;
 using ReactiveUI;
 
@@ -37,39 +38,34 @@ namespace NodeNetworkExtensions.Views
     Int32Rect imgRect = new Int32Rect(0, 0, IMG_WIDTH, IMG_HEIGHT);
     WriteableBitmap previewImg = new WriteableBitmap(IMG_WIDTH, IMG_HEIGHT, 96, 96, PixelFormats.Bgr32, null);
     readonly byte[] pixels = new byte[IMG_WIDTH * IMG_HEIGHT * IMG_BPP];
-    readonly float[] pixelValues = new float[IMG_WIDTH * IMG_HEIGHT];
 
     public void UpdatePreview(IModule module)
     {
       if (module == null)
       {
-        //pixels.Initialize();
         Preview.Visibility = Visibility.Collapsed;
         return;
       }
 
-      // First loop, obtain the values and determine min/max
+      NoiseMapBuilderPlane builderPlane = new NoiseMapBuilderPlane(0f, IMG_WIDTH * 0.01f, 0f, IMG_HEIGHT * 0.01f, false);
+
+      builderPlane.SetSize(IMG_WIDTH, IMG_HEIGHT);
+      builderPlane.SourceModule = module;
+      builderPlane.NoiseMap = new NoiseMap(IMG_WIDTH, IMG_HEIGHT);
+
+      builderPlane.Build();
+
+      // Determine min/max
       float min = float.MaxValue, max = float.MinValue;
-      for (int y = 0; y < IMG_HEIGHT; ++y)
-      {
-        for (int x = 0; x < IMG_WIDTH; ++x)
-        {
-          float pixelValue = (module as IModule3D).GetValue(x, 0, y);
-          pixelValues[x + y * IMG_WIDTH] = pixelValue;
+      builderPlane.NoiseMap.MinMax(out min, out max);
 
-          if (pixelValue < min) min = pixelValue;
-          if (pixelValue > max) max = pixelValue;
-        }
-      }
-
-      // Second loop, write pixel info based on the min/max
+      // Write pixel info based on the min/max
       float range = max - min;
       for (int y = 0; y < IMG_HEIGHT; ++y)
       {
         for (int x = 0; x < IMG_WIDTH; ++x)
         {
-
-          byte pixelValue = (byte)Math.Floor((pixelValues[x + y * IMG_WIDTH] - min) / range * 255);
+          byte pixelValue = (byte)Math.Floor((builderPlane.NoiseMap.GetValue(x, y) - min) / range * 255);
           pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP] = pixelValue;
           pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP + 1] = pixelValue;
           pixels[x * IMG_BPP + y * IMG_WIDTH * IMG_BPP + 2] = pixelValue;
