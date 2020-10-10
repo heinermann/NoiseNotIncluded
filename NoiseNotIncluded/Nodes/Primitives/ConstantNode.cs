@@ -12,6 +12,9 @@ namespace NoiseNotIncluded.Nodes.Primitives
       Name = "Constant";
 
       Inputs.Add(Offset);
+
+      // Disable preview
+      NodeOutput.Editor = null;
     }
 
     static ConstantNode()
