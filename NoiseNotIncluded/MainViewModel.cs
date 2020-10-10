@@ -78,8 +78,10 @@ namespace NoiseNotIncluded
       
       ListViewModel.AddNodeType(() => new DisplaceNode());
       ListViewModel.AddNodeType(() => new RotatePointNode());
-      ListViewModel.AddNodeType(() => new TurbulenceNode());
-      
+      // Turbulence crashes in ONI
+      // https://forums.kleientertainment.com/klei-bug-tracker/oni/using-turbulence-in-biome-noise-file-crashes-r25837/
+      // ListViewModel.AddNodeType(() => new TurbulenceNode());
+
       ListViewModel.AddNodeType(() => new ControlPointNode());
       ListViewModel.AddNodeType(() => new FloatNode());
 
