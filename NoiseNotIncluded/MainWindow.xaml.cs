@@ -69,9 +69,22 @@ namespace NoiseNotIncluded
       layouter.Layout(config, 50000);
     }
 
-    private void Open_Clicked(object sender, RoutedEventArgs e)
+    private bool AllowedToProceed()
     {
-      // Choose the file
+      return true;
+    }
+
+    private void New_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+    {
+      if (!AllowedToProceed()) return;
+
+      ViewModel.New();
+    }
+
+    private void Open_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+    {
+      if (!AllowedToProceed()) return;
+
       OpenFileDialog ofd = new OpenFileDialog();
       ofd.Filter = "yaml files (*.yaml)|*.yaml|All files (*.*)|*.*";
       if (ofd.ShowDialog() != true) return;
@@ -79,7 +92,12 @@ namespace NoiseNotIncluded
       ViewModel.LoadFile(ofd.FileName);
     }
 
-    private void SaveAs_Click(object sender, RoutedEventArgs e)
+    private void Save_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+    {
+      ViewModel.Save();
+    }
+
+    private void SaveAs_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
     {
       SaveFileDialog sfd = new SaveFileDialog();
       sfd.Filter = "yaml files (*.yaml)|*.yaml|All files (*.*)|*.*";

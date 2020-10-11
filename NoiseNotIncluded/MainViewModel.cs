@@ -97,12 +97,23 @@ namespace NoiseNotIncluded
       //ListViewModel.AddNodeType(() => new ControlPointNode());
       //ListViewModel.AddNodeType(() => new FloatNode());
 
-      NetworkViewModel.Nodes.Add(new TerminatorNode());
+      New();
     }
 
     public void AddConnection(NodeInputViewModel input, NodeOutputViewModel output)
     {
       NetworkViewModel.Connections.Add(new ConnectionViewModel(NetworkViewModel, input, output));
+    }
+
+    public void New()
+    {
+      NetworkViewModel.Nodes.Clear();
+      NetworkViewModel.Nodes.Add(new TerminatorNode());
+
+      CurrentFileName = null;
+      HasChangesSinceLastSaved = false;
+
+      FileData = new NoiseFile();
     }
 
     public void LoadFile(string filename)
@@ -291,7 +302,7 @@ namespace NoiseNotIncluded
 
     public void SaveFile(string filename)
     {
-      CreateBackup();
+      if (filename == CurrentFileName) CreateBackup();
 
       FileData.ClearLists();
 

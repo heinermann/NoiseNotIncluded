@@ -8,127 +8,141 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <DockPanel>
-      <Menu DockPanel.Dock="Top">
-        <MenuItem Header="_File">
-          <MenuItem Header="_New" InputGestureText="Ctrl+N">
-            <MenuItem.Icon>
-              <Image Source="Resources/document-new.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-          <MenuItem Header="_Open" InputGestureText="Ctrl+O" Click="Open_Clicked">
-            <MenuItem.Icon>
-              <Image Source="Resources/document-open.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-          <MenuItem Header="_Recent Files" AllowDrop="True">
-            <MenuItem.Icon>
-              <Image Source="Resources/document-open-recent.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-          <Separator/>
-          <MenuItem Header="_Save" InputGestureText="Ctrl+S">
-            <MenuItem.Icon>
-              <Image Source="Resources/document-save.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-          <MenuItem Header="Save _As" InputGestureText="Ctrl+Shift+S" Click="SaveAs_Click">
-            <MenuItem.Icon>
-              <Image Source="Resources/document-save-as.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-          <Separator/>
-          <MenuItem Header="E_xit" Click="Exit_Clicked">
-            <MenuItem.Icon>
-              <Image Source="Resources/application-exit.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-        </MenuItem>
-        <MenuItem Header="_Edit">
-          <MenuItem Header="C_ut" InputGestureText="Ctrl+X">
-            <MenuItem.Icon>
-              <Image Source="Resources/edit-cut.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-          <MenuItem Header="_Copy" InputGestureText="Ctrl+C">
-            <MenuItem.Icon>
-              <Image Source="Resources/edit-copy.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-          <MenuItem Header="_Paste" InputGestureText="Ctrl+V">
-            <MenuItem.Icon>
-              <Image Source="Resources/edit-paste.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-          <Separator/>
-          <MenuItem Header="Select _All" InputGestureText="Ctrl+A">
-            <MenuItem.Icon>
-              <Image Source="Resources/edit-select-all.png"/>
-            </MenuItem.Icon>
-          </MenuItem>
-        </MenuItem>
-      </Menu>
+  <Window.CommandBindings>
+    <CommandBinding Command="New" Executed="New_Executed" />
+    <CommandBinding Command="Open" Executed="Open_Executed" />
+    <CommandBinding Command="Save" Executed="Save_Executed" />
+    <CommandBinding Command="SaveAs" Executed="SaveAs_Executed" />
+  </Window.CommandBindings>
 
-      <TabControl x:Name="tabControl">
-        <TabItem Header="Noise Network">
-        <Grid MinWidth="128" MinHeight="128">
+  <Window.InputBindings>
+    <KeyBinding Gesture="Ctrl+N" Command="New"/>
+    <KeyBinding Gesture="Ctrl+O" Command="Open"/>
+    <KeyBinding Gesture="Ctrl+S" Command="Save"/>
+    <KeyBinding Gesture="Ctrl+Shift+S" Command="SaveAs"/>
+  </Window.InputBindings>
+  
+  <DockPanel>
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="_File">
+        <MenuItem Header="_New" InputGestureText="Ctrl+N" Command="New">
+          <MenuItem.Icon>
+            <Image Source="Resources/document-new.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="_Open" InputGestureText="Ctrl+O" Command="Open">
+          <MenuItem.Icon>
+            <Image Source="Resources/document-open.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="_Recent Files" AllowDrop="True">
+          <MenuItem.Icon>
+            <Image Source="Resources/document-open-recent.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <Separator/>
+        <MenuItem Header="_Save" InputGestureText="Ctrl+S" Command="Save">
+          <MenuItem.Icon>
+            <Image Source="Resources/document-save.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="Save _As" InputGestureText="Ctrl+Shift+S" Command="SaveAs">
+          <MenuItem.Icon>
+            <Image Source="Resources/document-save-as.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <Separator/>
+        <MenuItem Header="E_xit" Click="Exit_Clicked">
+          <MenuItem.Icon>
+            <Image Source="Resources/application-exit.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+      </MenuItem>
+      <MenuItem Header="_Edit">
+        <MenuItem Header="C_ut" InputGestureText="Ctrl+X">
+          <MenuItem.Icon>
+            <Image Source="Resources/edit-cut.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="_Copy" InputGestureText="Ctrl+C">
+          <MenuItem.Icon>
+            <Image Source="Resources/edit-copy.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="_Paste" InputGestureText="Ctrl+V">
+          <MenuItem.Icon>
+            <Image Source="Resources/edit-paste.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <Separator/>
+        <MenuItem Header="Select _All" InputGestureText="Ctrl+A">
+          <MenuItem.Icon>
+            <Image Source="Resources/edit-select-all.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+      </MenuItem>
+    </Menu>
+
+    <TabControl x:Name="tabControl">
+      <TabItem Header="Noise Network">
+      <Grid MinWidth="128" MinHeight="128">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" MinHeight="128"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition MinWidth="64" />
+          <ColumnDefinition Width="5" MinWidth="5" />
+          <ColumnDefinition Width="4*" MinWidth="128" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" MinWidth="63" MinHeight="64">
           <Grid.RowDefinitions>
-            <RowDefinition Height="*" MinHeight="128"/>
+            <RowDefinition Height="*" MinHeight="64" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <nodeList:NodeListView x:Name="nodeList" MinWidth="64" MinHeight="128"/>
+          <Button Grid.Row="1" MinHeight="24" Content="Auto-layout" Click="AutoLayout_Click" />
+        </Grid>
+
+        <GridSplitter Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+
+        <nodenetwork:NetworkView x:Name="networkView" MinWidth="256" MinHeight="256" Grid.Row="0" Grid.Column="2"/>
+      </Grid>
+      </TabItem>
+      <TabItem Header="Biome">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
           <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="64" />
-            <ColumnDefinition Width="5" MinWidth="5" />
-            <ColumnDefinition Width="4*" MinWidth="128" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
+          <DockPanel Grid.Row="0" Grid.Column="1">
+            <Label Content="Biome Type:" DockPanel.Dock="Left"/>
+            <ComboBox x:Name="biomeTypeDropdown" VerticalAlignment="Center" />
+          </DockPanel>
 
-          <Grid Grid.Row="0" Grid.Column="0" MinWidth="63" MinHeight="64">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="*" MinHeight="64" />
-              <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <nodeList:NodeListView x:Name="nodeList" MinWidth="64" MinHeight="128"/>
-            <Button Grid.Row="1" MinHeight="24" Content="Auto-layout" Click="AutoLayout_Click" />
-          </Grid>
-
-          <GridSplitter Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-
-          <nodenetwork:NetworkView x:Name="networkView" MinWidth="256" MinHeight="256" Grid.Row="0" Grid.Column="2"/>
+          <DataGrid Grid.Row="0" Grid.Column="0" HeadersVisibility="Column" >
+            <DataGrid.Columns>
+              <DataGridTextColumn Header=" "/>
+              <DataGridTextColumn Header="Element"/>
+              <DataGridTextColumn Header="BandSize"/>
+            </DataGrid.Columns>
+          </DataGrid>
+          <xctk:PropertyGrid x:Name="biomeProperties" Grid.Row="1" Grid.Column="1" IsScrollingToTopAfterRefresh="False" ShowSummary="False" ShowTitle="False"/>
+          <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Label Content="0" DockPanel.Dock="Left" />
+            <Label x:Name="BiomeBandMax" Content="0" DockPanel.Dock="Right"/>
+            <Image />
+          </DockPanel>
         </Grid>
-        </TabItem>
-        <TabItem Header="Biome">
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="*"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*"/>
-              <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <DockPanel Grid.Row="0" Grid.Column="1">
-              <Label Content="Biome Type:" DockPanel.Dock="Left"/>
-              <ComboBox x:Name="biomeTypeDropdown" VerticalAlignment="Center" />
-            </DockPanel>
+      </TabItem>
+      <TabItem Header="Preview"/>
+    </TabControl>
 
-            <DataGrid Grid.Row="0" Grid.Column="0" HeadersVisibility="Column" >
-              <DataGrid.Columns>
-                <DataGridTextColumn Header=" "/>
-                <DataGridTextColumn Header="Element"/>
-                <DataGridTextColumn Header="BandSize"/>
-              </DataGrid.Columns>
-            </DataGrid>
-            <xctk:PropertyGrid x:Name="biomeProperties" Grid.Row="1" Grid.Column="1" IsScrollingToTopAfterRefresh="False" ShowSummary="False" ShowTitle="False"/>
-            <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-              <Label Content="0" DockPanel.Dock="Left" />
-              <Label x:Name="BiomeBandMax" Content="0" DockPanel.Dock="Right"/>
-              <Image />
-            </DockPanel>
-          </Grid>
-        </TabItem>
-        <TabItem Header="Preview"/>
-      </TabControl>
-
-    </DockPanel>
+  </DockPanel>
 
 </Window>
