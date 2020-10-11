@@ -1,11 +1,14 @@
 ﻿using LibNoise;
 using LibNoise.Combiner;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Combiners
 {
   public class MinNode : CombinerNode
   {
+    protected override Combiner.CombinerType CombineType => Combiner.CombinerType.Min;
+
     public MinNode() : base()
     {
       Name = "Min";

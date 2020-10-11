@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Filters
 {
   public class HybridMultiFractalNode : FilterNode
   {
+    protected override NoiseFilter FilterType => NoiseFilter.HybridMultiFractal;
+
     // Lacunarity, Frequency, Octaves, Offset, Gain
 
     public HybridMultiFractalNode() : base()

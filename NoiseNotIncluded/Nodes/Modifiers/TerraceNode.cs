@@ -1,4 +1,5 @@
 ﻿using LibNoise;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Modifiers
@@ -6,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Modifiers
   // TODO: ControlFloats
   public class TerraceNode : ModifierNode
   {
+    protected override Modifier.ModifyType ModifyType => Modifier.ModifyType.Terrace;
+
     public TerraceNode() : base()
     {
       Name = "Terrace";

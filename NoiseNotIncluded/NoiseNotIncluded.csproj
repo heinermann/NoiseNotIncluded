@@ -152,6 +152,7 @@
     </Compile>
     <Compile Include="Nodes\Modifiers\Scale2d.cs" />
     <Compile Include="Nodes\NodeWithPreview.cs" />
+    <Compile Include="Util\DictHelpers.cs" />
     <Compile Include="Util\LibNoiseHelpers.cs" />
     <Compile Include="Util\NodeHelpers.cs" />
     <Compile Include="Yaml\Biome\BiomeFile.cs" />

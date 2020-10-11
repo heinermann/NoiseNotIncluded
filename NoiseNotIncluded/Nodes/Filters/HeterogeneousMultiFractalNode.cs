@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Filters
 {
   public class HeterogeneousMultiFractalNode : FilterNode
   {
+    protected override NoiseFilter FilterType => NoiseFilter.HeterogeneousMultiFractal;
+
     // Lacunarity, Frequency, Octaves, Offset
 
     public HeterogeneousMultiFractalNode() : base()

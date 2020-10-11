@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Primitives
 {
   public class CylindersNode : PrimitiveNode
   {
+    protected override NoisePrimitive PrimitiveType => NoisePrimitive.Cylinders;
+
     public CylindersNode() : base()
     {
       Name = "Cylinders";

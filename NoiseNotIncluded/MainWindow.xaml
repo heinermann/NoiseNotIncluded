@@ -32,7 +32,7 @@
               <Image Source="Resources/document-save.png"/>
             </MenuItem.Icon>
           </MenuItem>
-          <MenuItem Header="Save _As" InputGestureText="Ctrl+Shift+S">
+          <MenuItem Header="Save _As" InputGestureText="Ctrl+Shift+S" Click="SaveAs_Click">
             <MenuItem.Icon>
               <Image Source="Resources/document-save-as.png"/>
             </MenuItem.Icon>

@@ -3,6 +3,8 @@ using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.Views;
 using NoiseNotIncluded.Util;
+using NoiseNotIncluded.Yaml;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes
@@ -20,6 +22,9 @@ namespace NoiseNotIncluded.Nodes
     public ValueNodeInputViewModel<IModule> YNode { get; } = NodeHelpers.CreateNodeInput("Y");
     public ValueNodeInputViewModel<IModule> ZNode { get; } = NodeHelpers.CreateNodeInput("Z");
 
+    protected abstract Transformer.TransformerType TransformerType { get; }
+    public override Link.Type NodeType => Link.Type.Transformer;
+
     public TransformerNode() : base()
     {
       Inputs.Add(SelectNode);
@@ -30,6 +35,16 @@ namespace NoiseNotIncluded.Nodes
       return new NodeView
       {
         Background = Brushes.Orange
+      };
+    }
+
+    public override NoiseBase GetYamlNode()
+    {
+      return new Transformer()
+      {
+        transformerType = this.TransformerType,
+        name = this.Name,
+        pos = this.Position
       };
     }
   }

@@ -4,6 +4,8 @@ using LibNoise.Modifier;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.Views;
 using NoiseNotIncluded.Util;
+using NoiseNotIncluded.Yaml;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 using System.Windows.Media;
 
@@ -26,6 +28,9 @@ namespace NoiseNotIncluded.Nodes
     public ValueNodeInputViewModel<float?> Gain { get; } = NodeHelpers.CreateFloatEditor("Gain", 0f);
 
     public ValueNodeInputViewModel<IModule> NodeInput { get; } = NodeHelpers.CreateNodeInput("Input");
+
+    protected abstract NoiseFilter FilterType { get; }
+    public override Link.Type NodeType => Link.Type.Filter;
 
     public FilterNode()
     {
@@ -63,6 +68,22 @@ namespace NoiseNotIncluded.Nodes
       
       filter.Primitive3D = new Cache(NodeInput.Value);
       return filter;
+    }
+
+    public override NoiseBase GetYamlNode()
+    {
+      return new Filter()
+      {
+        filter = this.FilterType,
+        name = this.Name,
+        pos = this.Position,
+        exponent = 1,
+        frequency = Frequency.Value,
+        gain = Gain.Value,
+        lacunarity = Lacunarity.Value,
+        octaves = Octaves.Value,
+        offset = Offset.Value
+      };
     }
   }
 }

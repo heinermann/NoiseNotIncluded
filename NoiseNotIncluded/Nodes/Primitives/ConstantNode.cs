@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Primitives
 {
   public class ConstantNode : PrimitiveNode
   {
+    protected override NoisePrimitive PrimitiveType => NoisePrimitive.Constant;
+
     public ConstantNode() : base()
     {
       Name = "Constant";

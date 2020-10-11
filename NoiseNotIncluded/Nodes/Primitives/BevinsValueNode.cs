@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Primitives
 {
   public class BevinsValueNode : PrimitiveNode
   {
+    protected override NoisePrimitive PrimitiveType => NoisePrimitive.BevinsValue;
+
     public BevinsValueNode() : base()
     {
       Name = "BevinsValue";

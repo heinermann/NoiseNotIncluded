@@ -1,11 +1,14 @@
 ﻿using LibNoise;
 using LibNoise.Combiner;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Combiners
 {
   public class MultiplyNode : CombinerNode
   {
+    protected override Combiner.CombinerType CombineType => Combiner.CombinerType.Multiply;
+
     public MultiplyNode() : base()
     {
       Name = "Multiply";

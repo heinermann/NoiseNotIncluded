@@ -7,6 +7,8 @@ using System.Windows.Media;
 using LibNoise;
 using System;
 using NoiseNotIncluded.Util;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
+using NoiseNotIncluded.Yaml;
 
 namespace NoiseNotIncluded.Nodes.Combiners
 {
@@ -14,6 +16,9 @@ namespace NoiseNotIncluded.Nodes.Combiners
   {
     public ValueNodeInputViewModel<IModule> LeftInput { get; } = NodeHelpers.CreateNodeInput("Left");
     public ValueNodeInputViewModel<IModule> RightInput { get; } = NodeHelpers.CreateNodeInput("Right");
+
+    protected abstract Combiner.CombinerType CombineType { get; }
+    public override Link.Type NodeType => Link.Type.Combiner;
 
     public CombinerNode()
     {
@@ -29,6 +34,16 @@ namespace NoiseNotIncluded.Nodes.Combiners
       return new NodeView
       {
         Background = Brushes.Teal
+      };
+    }
+
+    public override NoiseBase GetYamlNode()
+    {
+      return new Combiner()
+      {
+        combineType = this.CombineType,
+        name = this.Name,
+        pos = this.Position
       };
     }
   }

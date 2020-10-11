@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Filters
 {
   public class SumFractalNode : FilterNode
   {
+    protected override NoiseFilter FilterType => NoiseFilter.SumFractal;
+
     // Lacunarity, Frequency, Octaves
 
     public SumFractalNode() : base()

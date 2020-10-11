@@ -3,6 +3,8 @@ using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
 using NodeNetworkExtensions.ViewModels;
+using NoiseNotIncluded.Yaml;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using System;
 
 namespace NoiseNotIncluded.Nodes
@@ -12,6 +14,8 @@ namespace NoiseNotIncluded.Nodes
     OutputPreviewModel OutputPreview { get; } = new OutputPreviewModel();
 
     public ValueNodeOutputViewModel<IModule> NodeOutput { get; }
+
+    public abstract Link.Type NodeType { get; }
 
     public NodeWithPreview() : base()
     {
@@ -31,5 +35,7 @@ namespace NoiseNotIncluded.Nodes
     }
 
     protected abstract IModule GetNewOutput();
+
+    public abstract NoiseBase GetYamlNode();
   }
 }

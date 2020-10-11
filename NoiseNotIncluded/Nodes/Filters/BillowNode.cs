@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Filters
 {
   public class BillowNode : FilterNode
   {
+    protected override NoiseFilter FilterType => NoiseFilter.Billow;
+
     // Lacunarity, Frequency, Octaves
     public BillowNode() : base()
     {

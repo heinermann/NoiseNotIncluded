@@ -1,5 +1,6 @@
 ﻿using LibNoise;
 using LibNoise.Modifier;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 using System.Reactive.Linq;
 
@@ -7,6 +8,8 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 {
   public class InvertNode : ModifierNode
   {
+    protected override Modifier.ModifyType ModifyType => Modifier.ModifyType.Invert;
+
     public InvertNode() : base()
     {
       Name = "Invert";

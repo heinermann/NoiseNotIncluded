@@ -22,12 +22,12 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
 	}
 
 	public ModifyType modifyType { get; set; }
-	public float lower { get; set; }
-	public float upper { get; set; }
-	public float exponent { get; set; }
-	public bool invert { get; set; }
-	public float scale { get; set; }
-	public float bias { get; set; }
+	public float? lower { get; set; }
+	public float? upper { get; set; }
+	public float? exponent { get; set; }
+	public bool? invert { get; set; }
+	public float? scale { get; set; }
+	public float? bias { get; set; }
 	public Vector2 scale2d { get; set; }
 
     public NodeViewModel CreateModel()

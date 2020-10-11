@@ -16,5 +16,18 @@ namespace NoiseNotIncluded.Yaml
     public Dictionary<string, Combiner> combiners { get; set; } = new Dictionary<string, Combiner>();
     public Dictionary<string, FloatList> floats { get; set; } = new Dictionary<string, FloatList>();
     public Dictionary<string, ControlPointList> controlpoints { get; set; } = new Dictionary<string, ControlPointList>();
+
+    public void ClearLists()
+    {
+      links.Clear();
+      primitives.Clear();
+      filters.Clear();
+      transformers.Clear();
+      selectors.Clear();
+      modifiers.Clear();
+      combiners.Clear();
+      floats.Clear();
+      controlpoints.Clear();
+    }
   }
 }

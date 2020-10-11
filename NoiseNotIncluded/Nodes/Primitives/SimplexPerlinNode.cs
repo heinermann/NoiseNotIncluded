@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Primitives
 {
   public class SimplexPerlinNode : PrimitiveNode
   {
+    protected override NoisePrimitive PrimitiveType => NoisePrimitive.SimplexPerlin;
+
     public SimplexPerlinNode() : base()
     {
       Name = "SimplexPerlin";

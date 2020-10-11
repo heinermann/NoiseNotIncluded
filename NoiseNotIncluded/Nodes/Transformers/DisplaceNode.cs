@@ -1,12 +1,15 @@
 ﻿using DynamicData;
 using LibNoise;
 using LibNoise.Transformer;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Transformers
 {
   public class DisplaceNode : TransformerNode
   {
+    protected override Transformer.TransformerType TransformerType => Transformer.TransformerType.Displace;
+
     public DisplaceNode() : base()
     {
       Name = "Displace";

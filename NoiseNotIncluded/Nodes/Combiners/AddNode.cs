@@ -1,11 +1,14 @@
 ﻿using LibNoise;
 using LibNoise.Combiner;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Combiners
 {
   public class AddNode : CombinerNode
   {
+    protected override Combiner.CombinerType CombineType => Combiner.CombinerType.Add;
+
     public AddNode() : base()
     {
       Name = "Add";

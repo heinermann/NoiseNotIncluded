@@ -3,12 +3,15 @@ using LibNoise;
 using LibNoise.Modifier;
 using NodeNetwork.Toolkit.ValueNode;
 using NoiseNotIncluded.Util;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Modifiers
 {
   public class ClampNode : ModifierNode
   {
+    protected override Modifier.ModifyType ModifyType => Modifier.ModifyType.Clamp;
+
     public ValueNodeInputViewModel<float?> Lower { get; } = NodeHelpers.CreateFloatEditor("Lower", -1f);
     public ValueNodeInputViewModel<float?> Upper { get; } = NodeHelpers.CreateFloatEditor("Upper", 1f);
 
@@ -35,6 +38,14 @@ namespace NoiseNotIncluded.Nodes.Modifiers
       if (NodeInput.Value == null || Lower.Value == null || Upper.Value == null) return null;
 
       return new Clamp(NodeInput.Value, Lower.Value.GetValueOrDefault(-1f), Upper.Value.GetValueOrDefault(1f));
+    }
+
+    public override NoiseBase GetYamlNode()
+    {
+      var result = base.GetYamlNode() as Modifier;
+      result.lower = Lower.Value;
+      result.upper = Upper.Value;
+      return result;
     }
   }
 }

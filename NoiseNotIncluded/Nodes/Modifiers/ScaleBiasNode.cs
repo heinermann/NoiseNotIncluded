@@ -3,12 +3,15 @@ using LibNoise;
 using LibNoise.Modifier;
 using NodeNetwork.Toolkit.ValueNode;
 using NoiseNotIncluded.Util;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
 
 namespace NoiseNotIncluded.Nodes.Modifiers
 {
   public class ScaleBiasNode : ModifierNode
   {
+    protected override Modifier.ModifyType ModifyType => Modifier.ModifyType.ScaleBias;
+
     public ValueNodeInputViewModel<float?> Scale { get; } = NodeHelpers.CreateFloatEditor("Scale", 1f);
     public ValueNodeInputViewModel<float?> Bias { get; } = NodeHelpers.CreateFloatEditor("Bias", 0f);
 
@@ -35,6 +38,14 @@ namespace NoiseNotIncluded.Nodes.Modifiers
       if (NodeInput.Value == null || Scale.Value == null || Bias.Value == null) return null;
 
       return new ScaleBias(NodeInput.Value, Scale.Value.GetValueOrDefault(1f), Bias.Value.GetValueOrDefault(0f));
+    }
+
+    public override NoiseBase GetYamlNode()
+    {
+      var result = base.GetYamlNode() as Modifier;
+      result.scale = Scale.Value;
+      result.bias = Bias.Value;
+      return result;
     }
   }
 }

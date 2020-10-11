@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Filters
 {
   public class VoronoiNode : FilterNode
   {
+    protected override NoiseFilter FilterType => NoiseFilter.Voronoi;
+
     // Frequency
 
     public VoronoiNode() : base()

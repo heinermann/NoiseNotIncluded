@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Filters
 {
   public class RidgedMultiFractalNode : FilterNode
   {
+    protected override NoiseFilter FilterType => NoiseFilter.RidgedMultiFractal;
+
     // All args
 
     public RidgedMultiFractalNode() : base()

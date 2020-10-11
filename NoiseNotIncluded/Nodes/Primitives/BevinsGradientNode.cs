@@ -8,6 +8,8 @@ namespace NoiseNotIncluded.Nodes.Primitives
 {
   public class BevinsGradientNode : PrimitiveNode
   {
+    protected override NoisePrimitive PrimitiveType => NoisePrimitive.BevinsGradient;
+
     public BevinsGradientNode() : base()
     {
       Name = "BevinsGradient";

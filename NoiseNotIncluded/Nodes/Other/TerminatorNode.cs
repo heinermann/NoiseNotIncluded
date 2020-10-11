@@ -1,44 +1,34 @@
 ﻿using DynamicData;
 using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
-using NodeNetwork.ViewModels;
 using NodeNetwork.Views;
-using NodeNetworkExtensions.ViewModels;
 using ReactiveUI;
-using System.Reactive.Linq;
 using System;
 using System.Windows.Media;
+using NoiseNotIncluded.Yaml;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
+using NoiseNotIncluded.Util;
 
 namespace NoiseNotIncluded.Nodes.Other
 {
-  public class TerminatorNode : NodeViewModel
+  public class TerminatorNode : NodeWithPreview
   {
-    public ValueNodeInputViewModel<IModule> NodeInput { get; } = new ValueNodeInputViewModel<IModule>()
-    {
-      Name = "Input"
-    };
+    public ValueNodeInputViewModel<IModule> NodeInput { get; } = NodeHelpers.CreateNodeInput("Input");
 
-    public NodeOutputViewModel NodeOutput { get; }
+    public override Link.Type NodeType => Link.Type.Terminator;
 
-    OutputPreviewModel OutputPreview { get; } = new OutputPreviewModel();
-
-    public TerminatorNode()
+    public TerminatorNode() : base()
     {
       Name = "TERMINATOR";
       CanBeRemovedByUser = false;
 
-      NodeOutput = new NodeOutputViewModel
-      {
-        Editor = OutputPreview,
-        MaxConnections = 0
-      };
+      NodeOutput.Name = "";
+      NodeOutput.MaxConnections = 0;
+      NodeOutput.Port.IsVisible = false;
 
-      NodeInput.ValueChanged.Subscribe(module => OutputPreview.Value = module);
+      RegisterOutputValue(NodeInput.ValueChanged);
 
       Inputs.Add(NodeInput);
-
-      NodeOutput.Port.IsVisible = false;
-      Outputs.Add(NodeOutput);
     }
 
     static TerminatorNode()
@@ -52,6 +42,16 @@ namespace NoiseNotIncluded.Nodes.Other
       {
         Background = Brushes.Black
       };
+    }
+
+    protected override IModule GetNewOutput()
+    {
+      throw new NotImplementedException();
+    }
+
+    public override NoiseBase GetYamlNode()
+    {
+      return null;
     }
   }
 }

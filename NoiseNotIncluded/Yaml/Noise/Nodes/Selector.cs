@@ -10,9 +10,9 @@
 	}
 
 	public SelectType selectType { get; set; }
-	public float lower { get; set; }
-	public float upper { get; set; }
-	public float edge { get; set; }
+	public float? lower { get; set; }
+	public float? upper { get; set; }
+	public float? edge { get; set; }
 
   }
 }

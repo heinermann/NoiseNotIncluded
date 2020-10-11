@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Filters
 {
   public class SinFractalNode : FilterNode
   {
+    protected override NoiseFilter FilterType => NoiseFilter.SinFractal;
+
     // Lacunarity, Frequency, Octaves
 
     public SinFractalNode() : base()

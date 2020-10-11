@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Primitives
 {
   public class ImprovedPerlinNode : PrimitiveNode
   {
+    protected override NoisePrimitive PrimitiveType => NoisePrimitive.ImprovedPerlin;
+
     public ImprovedPerlinNode() : base()
     {
       Name = "ImprovedPerlin";

@@ -16,7 +16,7 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
 	}
 
 	public TransformerType transformerType { get; set; }
-	public float power { get; set; }
+	public float? power { get; set; }
 	public Vector2 rotation { get; set; }
 
     public NodeViewModel CreateModel()

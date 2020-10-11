@@ -7,6 +7,8 @@ namespace NoiseNotIncluded.Nodes.Filters
 {
   public class PipeNode : FilterNode
   {
+    protected override NoiseFilter FilterType => NoiseFilter.Pipe;
+
     // Frequency
 
     public PipeNode() : base()
