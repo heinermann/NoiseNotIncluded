@@ -97,8 +97,6 @@ namespace NoiseNotIncluded
       // TODO
       //ListViewModel.AddNodeType(() => new ControlPointNode());
       //ListViewModel.AddNodeType(() => new FloatNode());
-
-      New();
     }
 
     public void AddConnection(NodeInputViewModel input, NodeOutputViewModel output)

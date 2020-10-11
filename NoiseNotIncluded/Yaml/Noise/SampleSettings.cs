@@ -1,15 +1,27 @@
 ﻿
 using NoiseNotIncluded.Yaml.Noise.Nodes;
-using System.Numerics;
+using System.Windows;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace NoiseNotIncluded.Yaml
 {
   public class SampleSettings : NoiseBase
   {
+    [PropertyOrder(5)]
     public float zoom { get; set; } = 0.1f;
+    
+    [PropertyOrder(6)]
     public bool normalise { get; set; } = false;
+    
+    [PropertyOrder(7)]
     public bool seamless { get; set; } = false;
-    public Vector2 lowerBound { get; set; } = new Vector2(2, 2);
-    public Vector2 upperBound { get; set; } = new Vector2(4, 4);
+    
+    [ExpandableObject()]
+    [PropertyOrder(8)]
+    public Point lowerBound { get; set; } = new Point(2, 2);
+
+    [ExpandableObject()]
+    [PropertyOrder(9)]
+    public Point upperBound { get; set; } = new Point(4, 4);
   }
 }

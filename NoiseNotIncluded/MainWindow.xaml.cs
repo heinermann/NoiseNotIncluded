@@ -1,20 +1,8 @@
-﻿using DynamicData;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using NodeNetwork.Toolkit.Layout.ForceDirected;
-using NodeNetwork.ViewModels;
-using NoiseNotIncluded.Nodes;
-using NoiseNotIncluded.Nodes.Combiners;
-using NoiseNotIncluded.Nodes.Other;
-using NoiseNotIncluded.Yaml;
-using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reactive.Disposables;
 using System.Windows;
-using YamlDotNet.Serialization;
 
 namespace NoiseNotIncluded
 {
@@ -50,8 +38,10 @@ namespace NoiseNotIncluded
       {
         this.OneWayBind(ViewModel, vm => vm.ListViewModel, v => v.nodeList.ViewModel).DisposeWith(d);
         this.OneWayBind(ViewModel, vm => vm.NetworkViewModel, v => v.networkView.ViewModel).DisposeWith(d);
-        //this.OneWayBind(ViewModel, vm => vm.ValueLabel, v => v.valueLabel.Content).DisposeWith(d);
       });
+
+      ViewModel.New();
+      noiseProperties.SelectedObject = ViewModel.FileData.settings;
     }
 
     private void Exit_Clicked(object sender, RoutedEventArgs e)
@@ -79,6 +69,7 @@ namespace NoiseNotIncluded
       if (!AllowedToProceed()) return;
 
       ViewModel.New();
+      noiseProperties.SelectedObject = ViewModel.FileData.settings;
     }
 
     private void Open_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
@@ -90,6 +81,7 @@ namespace NoiseNotIncluded
       if (ofd.ShowDialog() != true) return;
 
       ViewModel.LoadFile(ofd.FileName);
+      noiseProperties.SelectedObject = ViewModel.FileData.settings;
     }
 
     private void Save_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
