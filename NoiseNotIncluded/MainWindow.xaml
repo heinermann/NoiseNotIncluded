@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NoiseNotIncluded" xmlns:nodenetwork="clr-namespace:NodeNetwork.Views;assembly=NodeNetwork" xmlns:nodeList="clr-namespace:NodeNetwork.Toolkit.NodeList;assembly=NodeNetworkToolkit"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="NoiseNotIncluded.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow">
 
   <Window.CommandBindings>
     <CommandBinding Command="New" Executed="New_Executed" />
@@ -83,66 +83,55 @@
       </MenuItem>
     </Menu>
 
-    <TabControl x:Name="tabControl">
-      <TabItem Header="Noise Network">
-      <Grid MinWidth="128" MinHeight="128">
+    <Grid MinWidth="128" MinHeight="128">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" MinHeight="128"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition MinWidth="64" />
+        <ColumnDefinition Width="5" MinWidth="5" />
+        <ColumnDefinition Width="4*" MinWidth="128" />
+        <ColumnDefinition Width="5" MinWidth="5" />
+        <ColumnDefinition MinWidth="64" />
+      </Grid.ColumnDefinitions>
+
+      <Grid Grid.Row="0" Grid.Column="0" MinWidth="63" MinHeight="64">
         <Grid.RowDefinitions>
-          <RowDefinition Height="*" MinHeight="128"/>
+          <RowDefinition Height="*" MinHeight="64" />
+          <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition MinWidth="64" />
-          <ColumnDefinition Width="5" MinWidth="5" />
-          <ColumnDefinition Width="4*" MinWidth="128" />
-        </Grid.ColumnDefinitions>
-
-        <Grid Grid.Row="0" Grid.Column="0" MinWidth="63" MinHeight="64">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="*" MinHeight="64" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
-          <nodeList:NodeListView x:Name="nodeList" MinWidth="64" MinHeight="128"/>
-          <Button Grid.Row="1" MinHeight="24" Content="Auto-layout" Click="AutoLayout_Click" />
-        </Grid>
-
-        <GridSplitter Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-
-        <nodenetwork:NetworkView x:Name="networkView" MinWidth="256" MinHeight="256" Grid.Row="0" Grid.Column="2"/>
+        <nodeList:NodeListView Grid.Row="0" x:Name="nodeList" MinWidth="64" MinHeight="128"/>
+        <Button Grid.Row="1" MinHeight="24" Content="Auto-layout" Click="AutoLayout_Click" />
       </Grid>
-      </TabItem>
-      <TabItem Header="Biome">
-        <Grid>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-          </Grid.RowDefinitions>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-          </Grid.ColumnDefinitions>
-          <DockPanel Grid.Row="0" Grid.Column="1">
-            <Label Content="Biome Type:" DockPanel.Dock="Left"/>
-            <ComboBox x:Name="biomeTypeDropdown" VerticalAlignment="Center" />
-          </DockPanel>
 
-          <DataGrid Grid.Row="0" Grid.Column="0" HeadersVisibility="Column" >
-            <DataGrid.Columns>
-              <DataGridTextColumn Header=" "/>
-              <DataGridTextColumn Header="Element"/>
-              <DataGridTextColumn Header="BandSize"/>
-            </DataGrid.Columns>
-          </DataGrid>
-          <xctk:PropertyGrid x:Name="biomeProperties" Grid.Row="1" Grid.Column="1" IsScrollingToTopAfterRefresh="False" ShowSummary="False" ShowTitle="False"/>
-          <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-            <Label Content="0" DockPanel.Dock="Left" />
-            <Label x:Name="BiomeBandMax" Content="0" DockPanel.Dock="Right"/>
-            <Image />
-          </DockPanel>
-        </Grid>
-      </TabItem>
-      <TabItem Header="Preview"/>
-    </TabControl>
+      <GridSplitter Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
 
+      <DockPanel Grid.Row="0" Grid.Column="2">
+        <DockPanel DockPanel.Dock="Bottom">
+          <Label x:Name="biomeBandMin" Content="0.0" DockPanel.Dock="Left" />
+          <Label x:Name="biomeBandMax" Content="1.0" DockPanel.Dock="Right"/>
+          <Image x:Name="biomeElementDistribution" />
+        </DockPanel>
+        <nodenetwork:NetworkView x:Name="networkView" MinWidth="256" MinHeight="256" />
+      </DockPanel>
+      
+
+      <GridSplitter Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+
+      <Grid Grid.Row="0" Grid.Column="4" MinWidth="63" MinHeight="64">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" MinHeight="64" />
+          <RowDefinition Height="5" MinHeight="5" />
+          <RowDefinition Height="*" MinHeight="64" />
+        </Grid.RowDefinitions>
+        <xctk:PropertyGrid x:Name="noiseProperties" Grid.Row="0" IsScrollingToTopAfterRefresh="False" ShowSummary="False" ShowTitle="False"/>
+
+        <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+
+        <TextBox Grid.Row="2" FontFamily="Courier New" />
+      </Grid>
+
+    </Grid>
   </DockPanel>
 
 </Window>
