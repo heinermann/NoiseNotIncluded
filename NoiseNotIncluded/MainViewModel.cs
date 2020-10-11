@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using YamlDotNet.Serialization;
 
 namespace NoiseNotIncluded
@@ -108,7 +109,7 @@ namespace NoiseNotIncluded
     public void New()
     {
       NetworkViewModel.Nodes.Clear();
-      NetworkViewModel.Nodes.Add(new TerminatorNode());
+      NetworkViewModel.Nodes.Add(new TerminatorNode() { Position = new Point(256, 128) });
 
       CurrentFileName = null;
       HasChangesSinceLastSaved = false;
@@ -195,6 +196,9 @@ namespace NoiseNotIncluded
             break;
           case Link.Type.Terminator:
             AddConnection(terminatorNode.NodeInput, source0);
+
+            NodeViewModel previousNode = typeMap[link.source0.type][link.source0.name];
+            terminatorNode.Position = new Point(previousNode.Position.X + 256, previousNode.Position.Y);
             break;
         }
       }
