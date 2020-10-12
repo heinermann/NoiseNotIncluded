@@ -39,6 +39,56 @@ namespace NoiseNotIncluded
     public string CurrentFileName { get; set; }
     public bool HasChangesSinceLastSaved { get; set; }
 
+    private static readonly List<Func<NodeViewModel>> Factories = new List<Func<NodeViewModel>> {
+        () => new AddNode(),
+        () => new MaxNode(),
+        () => new MinNode(),
+        () => new MultiplyNode(),
+        () => new PowerNode(),
+
+        () => new BillowNode(),
+        () => new HeterogeneousMultiFractalNode(),
+        () => new HybridMultiFractalNode(),
+        () => new MultiFractalNode(),
+        () => new PipeNode(),
+        () => new RidgedMultiFractalNode(),
+        () => new SinFractalNode(),
+        () => new SumFractalNode(),
+        () => new VoronoiNode(),
+
+        () => new AbsNode(),
+        () => new ClampNode(),
+        //() => new CurveNode(), // TODO
+        () => new ExponentNode(),
+        () => new InvertNode(),
+        () => new Scale2DNode(),
+        () => new ScaleBiasNode(),
+        //() => new TerraceNode(), // TODO
+
+        () => new BevinsGradientNode(),
+        () => new BevinsValueNode(),
+        () => new ConstantNode(),
+        () => new CylindersNode(),
+        () => new ImprovedPerlinNode(),
+        () => new SimplexPerlinNode(),
+        () => new SpheresNode(),
+
+        // TODO
+        //() => new BlendNode(),
+        //() => new SelectNode(),
+
+        () => new DisplaceNode(),
+        () => new RotatePointNode(),
+        // Turbulence crashes in ONI
+        // https://forums.kleientertainment.com/klei-bug-tracker/oni/using-turbulence-in-biome-noise-file-crashes-r25837/
+        // () => new TurbulenceNode(),
+
+        // TODO
+        //() => new ControlPointNode(),
+        //() => new FloatNode(),
+      };
+
+
     public MainViewModel()
     {
       NetworkViewModel.Validator = network =>
@@ -52,52 +102,7 @@ namespace NoiseNotIncluded
         return new NetworkValidationResult(true, true, null);
       };
 
-      ListViewModel.AddNodeType(() => new AddNode());
-      ListViewModel.AddNodeType(() => new MaxNode());
-      ListViewModel.AddNodeType(() => new MinNode());
-      ListViewModel.AddNodeType(() => new MultiplyNode());
-      ListViewModel.AddNodeType(() => new PowerNode());
-      
-      ListViewModel.AddNodeType(() => new BillowNode());
-      ListViewModel.AddNodeType(() => new HeterogeneousMultiFractalNode());
-      ListViewModel.AddNodeType(() => new HybridMultiFractalNode());
-      ListViewModel.AddNodeType(() => new MultiFractalNode());
-      ListViewModel.AddNodeType(() => new PipeNode());
-      ListViewModel.AddNodeType(() => new RidgedMultiFractalNode());
-      ListViewModel.AddNodeType(() => new SinFractalNode());
-      ListViewModel.AddNodeType(() => new SumFractalNode());
-      ListViewModel.AddNodeType(() => new VoronoiNode());
-      
-      ListViewModel.AddNodeType(() => new AbsNode());
-      ListViewModel.AddNodeType(() => new ClampNode());
-      //ListViewModel.AddNodeType(() => new CurveNode()); // TODO
-      ListViewModel.AddNodeType(() => new ExponentNode());
-      ListViewModel.AddNodeType(() => new InvertNode());
-      ListViewModel.AddNodeType(() => new Scale2DNode());
-      ListViewModel.AddNodeType(() => new ScaleBiasNode());
-      //ListViewModel.AddNodeType(() => new TerraceNode()); // TODO
-
-      ListViewModel.AddNodeType(() => new BevinsGradientNode());
-      ListViewModel.AddNodeType(() => new BevinsValueNode());
-      ListViewModel.AddNodeType(() => new ConstantNode());
-      ListViewModel.AddNodeType(() => new CylindersNode());
-      ListViewModel.AddNodeType(() => new ImprovedPerlinNode());
-      ListViewModel.AddNodeType(() => new SimplexPerlinNode());
-      ListViewModel.AddNodeType(() => new SpheresNode());
-      
-      // TODO
-      //ListViewModel.AddNodeType(() => new BlendNode());
-      //ListViewModel.AddNodeType(() => new SelectNode());
-      
-      ListViewModel.AddNodeType(() => new DisplaceNode());
-      ListViewModel.AddNodeType(() => new RotatePointNode());
-      // Turbulence crashes in ONI
-      // https://forums.kleientertainment.com/klei-bug-tracker/oni/using-turbulence-in-biome-noise-file-crashes-r25837/
-      // ListViewModel.AddNodeType(() => new TurbulenceNode());
-
-      // TODO
-      //ListViewModel.AddNodeType(() => new ControlPointNode());
-      //ListViewModel.AddNodeType(() => new FloatNode());
+      Factories.ForEach(ListViewModel.AddNodeType);
     }
 
     public void AddConnection(NodeInputViewModel input, NodeOutputViewModel output)

@@ -13,6 +13,12 @@
     <CommandBinding Command="Open" Executed="Open_Executed" />
     <CommandBinding Command="Save" Executed="Save_Executed" />
     <CommandBinding Command="SaveAs" Executed="SaveAs_Executed" />
+    <CommandBinding Command="Undo" Executed="Undo_Executed" />
+    <CommandBinding Command="Redo" Executed="Redo_Executed" />
+    <CommandBinding Command="Copy" Executed="Copy_Executed" />
+    <CommandBinding Command="Paste" Executed="Paste_Executed" />
+    <CommandBinding Command="SelectAll" Executed="SelectAll_Executed" />
+    <CommandBinding Command="Delete" Executed="Delete_Executed" />
   </Window.CommandBindings>
 
   <Window.InputBindings>
@@ -20,6 +26,13 @@
     <KeyBinding Gesture="Ctrl+O" Command="Open"/>
     <KeyBinding Gesture="Ctrl+S" Command="Save"/>
     <KeyBinding Gesture="Ctrl+Shift+S" Command="SaveAs"/>
+    <KeyBinding Gesture="Ctrl+Z" Command="Undo"/>
+    <KeyBinding Gesture="Ctrl+Y" Command="Redo"/>
+    <KeyBinding Gesture="Ctrl+Shift+Z" Command="Redo"/>
+    <KeyBinding Gesture="Ctrl+C" Command="Copy"/>
+    <KeyBinding Gesture="Ctrl+V" Command="Paste"/>
+    <KeyBinding Gesture="Ctrl+A" Command="SelectAll"/>
+    <KeyBinding Gesture="Del" Command="Delete"/>
   </Window.InputBindings>
   
   <DockPanel>
@@ -59,11 +72,17 @@
         </MenuItem>
       </MenuItem>
       <MenuItem Header="_Edit">
-        <MenuItem Header="C_ut" InputGestureText="Ctrl+X">
+        <MenuItem Header="_Undo" InputGestureText="Ctrl+Z">
           <MenuItem.Icon>
-            <Image Source="Resources/edit-cut.png"/>
+            <Image Source="Resources/edit-undo.png"/>
           </MenuItem.Icon>
         </MenuItem>
+        <MenuItem Header="_Redo" InputGestureText="Ctrl+Y">
+          <MenuItem.Icon>
+            <Image Source="Resources/edit-redo.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <Separator/>
         <MenuItem Header="_Copy" InputGestureText="Ctrl+C">
           <MenuItem.Icon>
             <Image Source="Resources/edit-copy.png"/>
@@ -80,6 +99,12 @@
             <Image Source="Resources/edit-select-all.png"/>
           </MenuItem.Icon>
         </MenuItem>
+        <MenuItem Header="_Delete" InputGestureText="Del">
+          <MenuItem.Icon>
+            <Image Source="Resources/edit-delete.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+
       </MenuItem>
     </Menu>
 

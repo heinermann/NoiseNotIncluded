@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using NodeNetwork.Toolkit.Layout.ForceDirected;
+using NoiseNotIncluded.Nodes.Other;
 using ReactiveUI;
+using System.Linq;
 using System.Reactive.Disposables;
 using System.Windows;
 using System.Windows.Input;
@@ -103,6 +105,37 @@ namespace NoiseNotIncluded
     private void noiseProperties_PropertyValueChanged(object sender, PropertyValueChangedEventArgs e)
     {
       ViewModel.SyncZoom();
+    }
+
+    private void Undo_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+    }
+
+    private void Redo_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+    }
+
+    private void Copy_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+    }
+
+    private void Paste_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+    }
+
+    private void SelectAll_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+      ViewModel.NetworkViewModel.Nodes.Items.ToList().ForEach(node => node.IsSelected = true);
+    }
+
+    private void Delete_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+      var selectedNodes = ViewModel.NetworkViewModel.SelectedNodes.Items
+        .Where(node => !(node is TerminatorNode)).ToList();
+
+      ViewModel.NetworkViewModel.Nodes.Edit(
+        nodeList => selectedNodes.ForEach(selectedNode => nodeList.Remove(selectedNode))
+      );
     }
   }
 }
