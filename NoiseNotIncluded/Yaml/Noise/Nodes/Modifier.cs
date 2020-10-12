@@ -1,5 +1,6 @@
 ﻿using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
+using NodeNetworkExtensions.ViewModels;
 using NoiseNotIncluded.Nodes;
 using NoiseNotIncluded.Nodes.Modifiers;
 using System.Numerics;
@@ -40,13 +41,13 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
           break;
         case ModifyType.Clamp:
           var clampNode = new ClampNode();
-          (clampNode.Lower.Editor as ValueEditorViewModel<float?>).Value = lower;
-          (clampNode.Upper.Editor as ValueEditorViewModel<float?>).Value = upper;
+          (clampNode.Lower.Editor as FloatEditorViewModel).Value = lower;
+          (clampNode.Upper.Editor as FloatEditorViewModel).Value = upper;
           result = clampNode;
           break;
         case ModifyType.Exponent:
           var exponentNode = new ExponentNode();
-          (exponentNode.Exponent.Editor as ValueEditorViewModel<float?>).Value = exponent;
+          (exponentNode.Exponent.Editor as FloatEditorViewModel).Value = exponent;
           result = exponentNode;
           break;
         case ModifyType.Invert:
@@ -54,8 +55,8 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
           break;
         case ModifyType.ScaleBias:
           var scaleBiasNode = new ScaleBiasNode();
-          (scaleBiasNode.Scale.Editor as ValueEditorViewModel<float?>).Value = scale;
-          (scaleBiasNode.Bias.Editor as ValueEditorViewModel<float?>).Value = bias;
+          (scaleBiasNode.Scale.Editor as FloatEditorViewModel).Value = scale;
+          (scaleBiasNode.Bias.Editor as FloatEditorViewModel).Value = bias;
           result = scaleBiasNode;
           break;
         case ModifyType.Scale2d:

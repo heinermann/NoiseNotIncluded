@@ -1,4 +1,5 @@
 ﻿using NodeNetwork.ViewModels;
+using NodeNetworkExtensions.ViewModels;
 using NoiseNotIncluded.Nodes;
 using NoiseNotIncluded.Nodes.Transformers;
 using System.Numerics;
@@ -28,13 +29,14 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
           result = new DisplaceNode();
           break;
         case TransformerType.Turbulence:
-          // TODO: Args
           var turbulence = new TurbulenceNode();
+          (turbulence.Power.Editor as FloatEditorViewModel).Value = power;
           result = turbulence;
           break;
         case TransformerType.RotatePoint:
-          // TODO: Args
-          result = new RotatePointNode();
+          var rotationNode = new RotatePointNode();
+          (rotationNode.Rotation.Editor as Vector2EditorViewModel).Value = rotation;
+          result = rotationNode;
           break;
       }
 

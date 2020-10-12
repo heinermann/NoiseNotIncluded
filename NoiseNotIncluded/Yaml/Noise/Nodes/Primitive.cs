@@ -1,6 +1,7 @@
 ﻿using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
+using NodeNetworkExtensions.ViewModels;
 using NoiseNotIncluded.Nodes;
 using NoiseNotIncluded.Nodes.Primitives;
 
@@ -40,9 +41,9 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
           result = new SimplexPerlinNode();
           break;
       }
-      (result.Quality.Editor as ValueEditorViewModel<object>).Value = quality;
+      (result.Quality.Editor as EnumEditorViewModel).Value = quality;
       (result.Seed.Editor as ValueEditorViewModel<int?>).Value = seed;
-      (result.Offset.Editor as ValueEditorViewModel<float?>).Value = offset;
+      (result.Offset.Editor as FloatEditorViewModel).Value = offset;
 
       result.Name = name;
       result.Position = pos;

@@ -1,6 +1,7 @@
 ﻿using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
+using NodeNetworkExtensions.ViewModels;
 using NoiseNotIncluded.Nodes;
 using NoiseNotIncluded.Nodes.Filters;
 
@@ -50,11 +51,11 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
           break;
       }
 
-      (result.Frequency.Editor as ValueEditorViewModel<float?>).Value = frequency;
-      (result.Lacunarity.Editor as ValueEditorViewModel<float?>).Value = lacunarity;
+      (result.Frequency.Editor as FloatEditorViewModel).Value = frequency;
+      (result.Lacunarity.Editor as FloatEditorViewModel).Value = lacunarity;
       (result.Octaves.Editor as ValueEditorViewModel<int?>).Value = octaves;
-      (result.Offset.Editor as ValueEditorViewModel<float?>).Value = offset;
-      (result.Gain.Editor as ValueEditorViewModel<float?>).Value = gain;
+      (result.Offset.Editor as FloatEditorViewModel).Value = offset;
+      (result.Gain.Editor as FloatEditorViewModel).Value = gain;
 
       result.Name = name;
       result.Position = pos;
