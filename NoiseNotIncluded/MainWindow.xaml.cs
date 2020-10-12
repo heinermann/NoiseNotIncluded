@@ -3,6 +3,8 @@ using NodeNetwork.Toolkit.Layout.ForceDirected;
 using ReactiveUI;
 using System.Reactive.Disposables;
 using System.Windows;
+using System.Windows.Input;
+using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace NoiseNotIncluded
 {
@@ -64,7 +66,7 @@ namespace NoiseNotIncluded
       return true;
     }
 
-    private void New_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+    private void New_Executed(object sender, ExecutedRoutedEventArgs e)
     {
       if (!AllowedToProceed()) return;
 
@@ -72,7 +74,7 @@ namespace NoiseNotIncluded
       noiseProperties.SelectedObject = ViewModel.FileData.settings;
     }
 
-    private void Open_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+    private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
     {
       if (!AllowedToProceed()) return;
 
@@ -84,18 +86,23 @@ namespace NoiseNotIncluded
       noiseProperties.SelectedObject = ViewModel.FileData.settings;
     }
 
-    private void Save_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+    private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
     {
       ViewModel.Save();
     }
 
-    private void SaveAs_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+    private void SaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
     {
       SaveFileDialog sfd = new SaveFileDialog();
       sfd.Filter = "yaml files (*.yaml)|*.yaml|All files (*.*)|*.*";
       if (sfd.ShowDialog() != true) return;
 
       ViewModel.SaveFile(sfd.FileName);
+    }
+
+    private void noiseProperties_PropertyValueChanged(object sender, PropertyValueChangedEventArgs e)
+    {
+      ViewModel.SyncZoom();
     }
   }
 }

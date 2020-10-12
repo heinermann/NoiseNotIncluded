@@ -119,7 +119,7 @@
       <GridSplitter Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
 
       <Grid Grid.Row="0" Grid.Column="4" MinWidth="63" MinHeight="64">
-        <xctk:PropertyGrid x:Name="noiseProperties" Grid.Row="0" ShowSearchBox="False" ShowSortOptions="False" ShowSummary="False" ShowTitle="False" NameColumnWidth="140"/>
+        <xctk:PropertyGrid x:Name="noiseProperties" Grid.Row="0" ShowSearchBox="False" ShowSortOptions="False" ShowSummary="False" ShowTitle="False" NameColumnWidth="140" PropertyValueChanged="noiseProperties_PropertyValueChanged"/>
       </Grid>
 
     </Grid>

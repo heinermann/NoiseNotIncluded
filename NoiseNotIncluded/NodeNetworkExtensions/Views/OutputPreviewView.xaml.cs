@@ -47,7 +47,7 @@ namespace NodeNetworkExtensions.Views
         return;
       }
 
-      NoiseMapBuilderPlane builderPlane = new NoiseMapBuilderPlane(0f, IMG_WIDTH * 0.01f, 0f, IMG_HEIGHT * 0.01f, false);
+      NoiseMapBuilderPlane builderPlane = new NoiseMapBuilderPlane(0f, IMG_WIDTH * ViewModel.Zoom, 0f, IMG_HEIGHT * ViewModel.Zoom, false);
 
       builderPlane.SetSize(IMG_WIDTH, IMG_HEIGHT);
       builderPlane.SourceModule = module;
@@ -86,8 +86,8 @@ namespace NodeNetworkExtensions.Views
       Preview.Source = previewImg;
 
       this.WhenActivated(d => {
-        
         ViewModel.ValueChanged.Subscribe(UpdatePreview).DisposeWith(d);
+        ViewModel.ZoomChanged.Subscribe(_ => UpdatePreview(ViewModel.Value)).DisposeWith(d);
       });
     }
   }

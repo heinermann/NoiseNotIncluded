@@ -3,6 +3,7 @@ using NodeNetwork;
 using NodeNetwork.Toolkit;
 using NodeNetwork.Toolkit.NodeList;
 using NodeNetwork.ViewModels;
+using NodeNetworkExtensions.ViewModels;
 using NoiseNotIncluded.Nodes;
 using NoiseNotIncluded.Nodes.Combiners;
 using NoiseNotIncluded.Nodes.Filters;
@@ -110,9 +111,24 @@ namespace NoiseNotIncluded
       NetworkViewModel.Nodes.Add(new TerminatorNode() { Position = new Point(256, 128) });
 
       CurrentFileName = null;
-      HasChangesSinceLastSaved = false;
 
       FileData = new NoiseFile();
+      Init();
+    }
+
+    void Init()
+    {
+      HasChangesSinceLastSaved = false;
+      SyncZoom();
+    }
+
+    public void SyncZoom()
+    {
+      foreach (NodeViewModel node in Enumerable.Concat(ListViewModel.Nodes.Items, NetworkViewModel.Nodes.Items))
+      {
+        var outputPreview = node.Outputs.Items.First().Editor as OutputPreviewModel;
+        if (outputPreview != null) outputPreview.Zoom = FileData.settings.zoom;
+      }
     }
 
     public void LoadFile(string filename)
@@ -201,8 +217,8 @@ namespace NoiseNotIncluded
         }
       }
 
-      HasChangesSinceLastSaved = false;
       CurrentFileName = filename;
+      Init();
     }
 
     void SerializeNodes()
