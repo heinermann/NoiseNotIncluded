@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NoiseNotIncluded" xmlns:nodenetwork="clr-namespace:NodeNetwork.Views;assembly=NodeNetwork" xmlns:nodeList="clr-namespace:NodeNetwork.Toolkit.NodeList;assembly=NodeNetworkToolkit"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="NoiseNotIncluded.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow">
+        Title="Noise Not Included" Icon="Resources/noise32.png">
 
   <Window.CommandBindings>
     <CommandBinding Command="New" Executed="New_Executed" />

@@ -15,6 +15,8 @@ An Oxygen Not Included biome noise editor and previewer.
 - Some values are written even if they weren't included on load (using their defaults in ONI)
 - Some float values get written at a very high precision (positions)
 - Some float values get shifted to their internal representations (i.e. 0.8 becomes 0.800000012, 0.08 becomes 0.0799999982)
+- RotatePoint doesn't load its arguments correctly
+- ScaleBias doesn't appear to do anything at all
 
 ### Ideas
 - Edit the biome file by drag/drop to rearrange elements in the band
