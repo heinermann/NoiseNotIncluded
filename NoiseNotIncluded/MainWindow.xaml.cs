@@ -1,10 +1,14 @@
 ﻿using Microsoft.Win32;
 using NodeNetwork.Toolkit.Layout.ForceDirected;
 using NoiseNotIncluded.Nodes.Other;
+using NoiseNotIncluded.Properties;
 using ReactiveUI;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 
@@ -32,6 +36,8 @@ namespace NoiseNotIncluded
     }
     #endregion
 
+    Dictionary<MenuItem, string> recentFilesPathMap = new Dictionary<MenuItem, string>();
+
     public MainWindow()
     {
       InitializeComponent();
@@ -46,6 +52,9 @@ namespace NoiseNotIncluded
 
       ViewModel.New();
       noiseProperties.SelectedObject = ViewModel.FileData.settings;
+
+      if (Settings.Default.RecentFiles == null) Settings.Default.RecentFiles = new StringCollection();
+      ResetRecentFilesMenu();
     }
 
     private void Exit_Clicked(object sender, RoutedEventArgs e)
@@ -60,7 +69,7 @@ namespace NoiseNotIncluded
       {
         Network = ViewModel.NetworkViewModel
       };
-      layouter.Layout(config, 50000);
+      layouter.Layout(config, 10000);
     }
 
     private bool AllowedToProceed()
@@ -76,6 +85,50 @@ namespace NoiseNotIncluded
       noiseProperties.SelectedObject = ViewModel.FileData.settings;
     }
 
+    private void ResetRecentFilesMenu()
+    {
+      recentFilesPathMap.Clear();
+      recentFilesList.Items.Clear();
+
+      foreach (string filename in Settings.Default.RecentFiles)
+      {
+        MenuItem newMenu = new MenuItem() { Header = filename };
+        newMenu.Click += new RoutedEventHandler(Open_RecentMenuItem);
+        recentFilesPathMap.Add(newMenu, filename);
+        recentFilesList.Items.Add(newMenu);
+      }
+    }
+
+    private void UpdateRecentFilesList(string newFilename)
+    {
+      var newList = Settings.Default.RecentFiles.Cast<string>().ToList();
+      newList.RemoveAll(filename => filename == newFilename);
+
+      Settings.Default.RecentFiles.Clear();
+      Settings.Default.RecentFiles.AddRange(newList.Prepend(newFilename).Take(15).ToArray());
+      Settings.Default.Save();
+
+      ResetRecentFilesMenu();
+    }
+
+    private void OpenFile(string filename)
+    {
+      ViewModel.LoadFile(filename);
+      noiseProperties.SelectedObject = ViewModel.FileData.settings;
+
+      UpdateRecentFilesList(filename);
+    }
+
+    private void Open_RecentMenuItem(object sender, RoutedEventArgs e)
+    {
+      MenuItem item = sender as MenuItem;
+      if (item == null) return;
+
+      if (!AllowedToProceed()) return;
+
+      OpenFile(recentFilesPathMap[item]);
+    }
+
     private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
     {
       if (!AllowedToProceed()) return;
@@ -84,8 +137,7 @@ namespace NoiseNotIncluded
       ofd.Filter = "yaml files (*.yaml)|*.yaml|All files (*.*)|*.*";
       if (ofd.ShowDialog() != true) return;
 
-      ViewModel.LoadFile(ofd.FileName);
-      noiseProperties.SelectedObject = ViewModel.FileData.settings;
+      OpenFile(ofd.FileName);
     }
 
     private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -100,6 +152,7 @@ namespace NoiseNotIncluded
       if (sfd.ShowDialog() != true) return;
 
       ViewModel.SaveFile(sfd.FileName);
+      UpdateRecentFilesList(sfd.FileName);
     }
 
     private void noiseProperties_PropertyValueChanged(object sender, PropertyValueChangedEventArgs e)

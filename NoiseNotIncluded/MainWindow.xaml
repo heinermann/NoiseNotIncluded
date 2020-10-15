@@ -48,10 +48,11 @@
             <Image Source="Resources/document-open.png"/>
           </MenuItem.Icon>
         </MenuItem>
-        <MenuItem Header="_Recent Files" AllowDrop="True">
+        <MenuItem x:Name="recentFilesList" Header="_Recent Files" AllowDrop="True">
           <MenuItem.Icon>
             <Image Source="Resources/document-open-recent.png"/>
           </MenuItem.Icon>
+          <MenuItem Header="" IsEnabled="False"/>
         </MenuItem>
         <Separator/>
         <MenuItem Header="_Save" InputGestureText="Ctrl+S" Command="Save">
