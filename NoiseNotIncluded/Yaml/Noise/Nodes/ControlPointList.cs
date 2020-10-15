@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using NodeNetwork.ViewModels;
+using System.Collections.Generic;
 
 namespace NoiseNotIncluded.Yaml.Noise.Nodes
 {
@@ -11,5 +12,10 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
     }
 
     public List<Control> points { get; set; } = new List<Control>();
+
+    public override NodeViewModel CreateModel()
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

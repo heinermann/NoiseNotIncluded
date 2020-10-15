@@ -1,4 +1,6 @@
-﻿namespace NoiseNotIncluded.Yaml.Noise.Nodes
+﻿using NodeNetwork.ViewModels;
+
+namespace NoiseNotIncluded.Yaml.Noise.Nodes
 {
   public class Selector : NoiseBase
   {
@@ -14,5 +16,9 @@
 	public float? upper { get; set; }
 	public float? edge { get; set; }
 
+    public override NodeViewModel CreateModel()
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

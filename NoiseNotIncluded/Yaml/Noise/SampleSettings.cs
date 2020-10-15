@@ -1,4 +1,5 @@
 ﻿
+using NodeNetwork.ViewModels;
 using NoiseNotIncluded.Yaml.Noise.Nodes;
 using System.Windows;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -23,5 +24,10 @@ namespace NoiseNotIncluded.Yaml
     [ExpandableObject()]
     [PropertyOrder(9)]
     public Point upperBound { get; set; } = new Point(4, 4);
+
+    public override NodeViewModel CreateModel()
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

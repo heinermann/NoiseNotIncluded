@@ -20,7 +20,7 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
 	public float? power { get; set; }
 	public Vector2 rotation { get; set; }
 
-    public NodeViewModel CreateModel()
+    public override NodeViewModel CreateModel()
     {
       TransformerNode result = null;
       switch (transformerType)

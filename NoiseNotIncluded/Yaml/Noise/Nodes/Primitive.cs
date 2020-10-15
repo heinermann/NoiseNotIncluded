@@ -14,7 +14,7 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
     public int? seed { get; set; }
     public float? offset { get; set; }
 
-    public NodeViewModel CreateModel()
+    public override NodeViewModel CreateModel()
     {
       PrimitiveNode result = null;
       switch (primative)

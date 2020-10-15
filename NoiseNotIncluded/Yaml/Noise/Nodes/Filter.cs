@@ -17,7 +17,7 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
     public float? gain { get; set; }
     public float? exponent { get; set; }
 
-    public NodeViewModel CreateModel()
+    public override NodeViewModel CreateModel()
     {
       FilterNode result = null;
       switch (filter)

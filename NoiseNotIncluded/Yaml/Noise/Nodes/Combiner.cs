@@ -18,7 +18,7 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
 	public CombinerType combineType { get; set; }
 
 
-    public NodeViewModel CreateModel()
+    public override NodeViewModel CreateModel()
     {
       CombinerNode result = null;
       switch (combineType)

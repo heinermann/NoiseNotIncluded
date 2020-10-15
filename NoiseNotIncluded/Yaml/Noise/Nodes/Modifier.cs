@@ -31,7 +31,7 @@ namespace NoiseNotIncluded.Yaml.Noise.Nodes
 	public float? bias { get; set; }
 	public Vector2 scale2d { get; set; }
 
-    public NodeViewModel CreateModel()
+    public override NodeViewModel CreateModel()
     {
       ModifierNode result = null;
       switch (modifyType)

@@ -9,7 +9,6 @@ An Oxygen Not Included biome noise editor and previewer.
 - Use the elements of the biome file to render their bands and range at the bottom.
 - Improve stability, fix major bugs
 - Undo/Redo
-- Copy/Paste
 - Add Tests
 
 ### Known Bugs

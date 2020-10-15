@@ -1,8 +1,13 @@
-﻿using Microsoft.Win32;
+﻿using DynamicData;
+using Microsoft.Win32;
 using NodeNetwork.Toolkit.Layout.ForceDirected;
+using NodeNetwork.ViewModels;
+using NoiseNotIncluded.Nodes;
 using NoiseNotIncluded.Nodes.Other;
 using NoiseNotIncluded.Properties;
+using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -37,6 +42,8 @@ namespace NoiseNotIncluded
     #endregion
 
     Dictionary<MenuItem, string> recentFilesPathMap = new Dictionary<MenuItem, string>();
+
+    List<NoiseBase> virtualClipboard = new List<NoiseBase>();
 
     public MainWindow()
     {
@@ -170,10 +177,22 @@ namespace NoiseNotIncluded
 
     private void Copy_Executed(object sender, ExecutedRoutedEventArgs e)
     {
+      virtualClipboard.Clear();
+      var selectedNodesAsSerializable = ViewModel.NetworkViewModel.SelectedNodes.Items
+        .Where(nvm => !(nvm is TerminatorNode))
+        .Select(nvm => (nvm as NodeWithPreview).GetYamlNode());
+      virtualClipboard.AddRange(selectedNodesAsSerializable);
     }
 
     private void Paste_Executed(object sender, ExecutedRoutedEventArgs e)
     {
+      var newNodes = virtualClipboard.Select(node => {
+        var model = node.CreateModel();
+        model.Name += "_2";
+        model.Position = new Point(model.Position.X + 16, model.Position.Y + 16);
+        return model;
+      });
+      ViewModel.NetworkViewModel.Nodes.AddRange(newNodes);
     }
 
     private void SelectAll_Executed(object sender, ExecutedRoutedEventArgs e)
