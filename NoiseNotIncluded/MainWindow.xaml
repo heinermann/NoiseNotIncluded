@@ -73,12 +73,12 @@
         </MenuItem>
       </MenuItem>
       <MenuItem Header="_Edit">
-        <MenuItem Header="_Undo" InputGestureText="Ctrl+Z">
+        <MenuItem Header="_Undo" InputGestureText="Ctrl+Z" IsEnabled="False">
           <MenuItem.Icon>
             <Image Source="Resources/edit-undo.png"/>
           </MenuItem.Icon>
         </MenuItem>
-        <MenuItem Header="_Redo" InputGestureText="Ctrl+Y">
+        <MenuItem Header="_Redo" InputGestureText="Ctrl+Y" IsEnabled="False">
           <MenuItem.Icon>
             <Image Source="Resources/edit-redo.png"/>
           </MenuItem.Icon>

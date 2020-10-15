@@ -88,7 +88,6 @@ namespace NoiseNotIncluded
         //() => new FloatNode(),
       };
 
-
     public MainViewModel()
     {
       NetworkViewModel.Validator = network =>
@@ -99,10 +98,25 @@ namespace NoiseNotIncluded
           return new NetworkValidationResult(false, false, new ErrorMessageViewModel("Network contains loops!"));
         }
 
+        if (!IsAllNodeNamesUnique())
+        {
+          return new NetworkValidationResult(false, false, new ErrorMessageViewModel("Nodes contain duplicate names!"));
+        }
+
         return new NetworkValidationResult(true, true, null);
       };
 
       Factories.ForEach(ListViewModel.AddNodeType);
+    }
+
+    bool IsAllNodeNamesUnique()
+    {
+      HashSet<string> names = new HashSet<string>();
+      foreach (var node in NetworkViewModel.Nodes.Items)
+      {
+        if (!names.Add(node.Name)) return false;
+      }
+      return true;
     }
 
     public void AddConnection(NodeInputViewModel input, NodeOutputViewModel output)
