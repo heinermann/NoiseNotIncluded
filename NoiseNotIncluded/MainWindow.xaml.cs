@@ -186,10 +186,13 @@ namespace NoiseNotIncluded
 
     private void Paste_Executed(object sender, ExecutedRoutedEventArgs e)
     {
+      ViewModel.NetworkViewModel.ClearSelection();
+
       var newNodes = virtualClipboard.Select(node => {
         var model = node.CreateModel();
         model.Name += "_2";
         model.Position = new Point(model.Position.X + 16, model.Position.Y + 16);
+        model.IsSelected = true;
         return model;
       });
       ViewModel.NetworkViewModel.Nodes.AddRange(newNodes);
