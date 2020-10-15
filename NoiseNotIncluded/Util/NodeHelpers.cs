@@ -1,8 +1,12 @@
 ﻿using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
+using NodeNetwork.Views;
 using NodeNetworkExtensions.ViewModels;
 using System;
 using System.Numerics;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace NoiseNotIncluded.Util
 {
@@ -79,6 +83,15 @@ namespace NoiseNotIncluded.Util
       };
     }
 
+    public static NodeView CreateNodeView(Brush background)
+    {
+      var result = new NodeView
+      {
+        Background = background
+      };
 
+      result.MouseDoubleClick += new MouseButtonEventHandler((Application.Current.MainWindow as MainWindow).ViewModel.DoubleClickedNode_Event);
+      return result;
+    }
   }
 }

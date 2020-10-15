@@ -31,10 +31,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     protected static NodeView GetNodeView()
     {
-      return new NodeView
-      {
-        Background = Brushes.Teal
-      };
+      return NodeHelpers.CreateNodeView(Brushes.Teal);
     }
 
     public override NoiseBase GetYamlNode()

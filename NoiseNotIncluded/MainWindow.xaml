@@ -18,6 +18,7 @@
     <CommandBinding Command="Paste" Executed="Paste_Executed" />
     <CommandBinding Command="SelectAll" Executed="SelectAll_Executed" />
     <CommandBinding Command="Delete" Executed="Delete_Executed" />
+    <CommandBinding Command="Properties" Executed="Rename_Executed" />
   </Window.CommandBindings>
 
   <Window.InputBindings>
@@ -32,6 +33,7 @@
     <KeyBinding Gesture="Ctrl+V" Command="Paste"/>
     <KeyBinding Gesture="Ctrl+A" Command="SelectAll"/>
     <KeyBinding Gesture="Del" Command="Delete"/>
+    <KeyBinding Gesture="Enter" Command="Properties"/>
   </Window.InputBindings>
   
   <DockPanel>
@@ -97,6 +99,11 @@
         <MenuItem Header="Select _All" InputGestureText="Ctrl+A" Command="SelectAll">
           <MenuItem.Icon>
             <Image Source="Resources/edit-select-all.png"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="_Rename Node" InputGestureText="Enter" Command="Properties">
+          <MenuItem.Icon>
+            <Image Source="Resources/edit-rename.png"/>
           </MenuItem.Icon>
         </MenuItem>
         <MenuItem Header="_Delete" InputGestureText="Del" Command="Delete">

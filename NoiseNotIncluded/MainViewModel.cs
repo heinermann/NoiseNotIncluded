@@ -3,6 +3,7 @@ using NodeNetwork;
 using NodeNetwork.Toolkit;
 using NodeNetwork.Toolkit.NodeList;
 using NodeNetwork.ViewModels;
+using NodeNetwork.Views;
 using NodeNetworkExtensions.ViewModels;
 using NoiseNotIncluded.Nodes;
 using NoiseNotIncluded.Nodes.Combiners;
@@ -10,7 +11,6 @@ using NoiseNotIncluded.Nodes.Filters;
 using NoiseNotIncluded.Nodes.Modifiers;
 using NoiseNotIncluded.Nodes.Other;
 using NoiseNotIncluded.Nodes.Primitives;
-using NoiseNotIncluded.Nodes.Selectors;
 using NoiseNotIncluded.Nodes.Transformers;
 using NoiseNotIncluded.Util;
 using NoiseNotIncluded.Yaml;
@@ -21,6 +21,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using YamlDotNet.Serialization;
 
 namespace NoiseNotIncluded
@@ -356,6 +358,37 @@ namespace NoiseNotIncluded
 
       HasChangesSinceLastSaved = false;
       CurrentFileName = filename;
+    }
+
+    public void OpenNodeProperties(NodeViewModel node)
+    {
+      if (node == null || node is TerminatorNode) return;
+
+      var props = new NodeProperties();
+      props.NodeName.Text = node.Name;
+      if (props.ShowDialog() == true)
+      {
+        node.Name = props.NodeName.Text;
+      }
+    }
+
+    public void DoubleClickedNode_Event(object sender, MouseButtonEventArgs e)
+    {
+      if (e.ChangedButton != MouseButton.Left) return;
+
+      // Avoid triggering when interacting with nodes normally (edit boxes, collapser)
+      if (!(e.OriginalSource is TextBlock || e.OriginalSource is Border)) return;
+
+      NodeViewModel node = (sender as NodeView)?.ViewModel;
+      OpenNodeProperties(node);
+    }
+
+    public void OpenSelectedNodeProperties()
+    {
+      if (NetworkViewModel.SelectedNodes.Count != 1) return;
+
+      var node = NetworkViewModel.SelectedNodes.Items.First();
+      OpenNodeProperties(node);
     }
   }
 }

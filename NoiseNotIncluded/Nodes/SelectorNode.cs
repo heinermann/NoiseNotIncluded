@@ -1,8 +1,8 @@
-﻿
-using DynamicData;
+﻿using DynamicData;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
 using NodeNetwork.Views;
+using NoiseNotIncluded.Util;
 using System.Reactive.Linq;
 using System.Windows.Media;
 
@@ -45,10 +45,7 @@ namespace NoiseNotIncluded.Nodes
 
     protected static NodeView GetNodeView()
     {
-      return new NodeView
-      {
-        Background = Brushes.DarkViolet
-      };
+      return NodeHelpers.CreateNodeView(Brushes.DarkViolet);
     }
   }
 }

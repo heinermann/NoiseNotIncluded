@@ -1,19 +1,18 @@
 ﻿using DynamicData;
 using Microsoft.Win32;
 using NodeNetwork.Toolkit.Layout.ForceDirected;
-using NodeNetwork.ViewModels;
 using NoiseNotIncluded.Nodes;
 using NoiseNotIncluded.Nodes.Other;
 using NoiseNotIncluded.Properties;
 using NoiseNotIncluded.Yaml.Noise.Nodes;
 using ReactiveUI;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 
@@ -203,8 +202,18 @@ namespace NoiseNotIncluded
       ViewModel.NetworkViewModel.Nodes.Items.ToList().ForEach(node => node.IsSelected = true);
     }
 
+    private bool IsKeyboardCaptured()
+    {
+      return Keyboard.FocusedElement is TextBoxBase ||
+        Keyboard.FocusedElement is ButtonBase ||
+        Keyboard.FocusedElement is PropertyItemBase ||
+        Keyboard.FocusedElement is ItemsControl;
+    }
+
     private void Delete_Executed(object sender, ExecutedRoutedEventArgs e)
     {
+      if (IsKeyboardCaptured()) return;
+
       var selectedNodes = ViewModel.NetworkViewModel.SelectedNodes.Items
         .Where(node => !(node is TerminatorNode)).ToList();
 
@@ -212,5 +221,14 @@ namespace NoiseNotIncluded
         nodeList => selectedNodes.ForEach(selectedNode => nodeList.Remove(selectedNode))
       );
     }
+
+    private void Rename_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+      if (IsKeyboardCaptured()) return;
+
+      MessageBox.Show(Keyboard.FocusedElement?.GetType()?.Name);
+      ViewModel.OpenSelectedNodeProperties();
+    }
+
   }
 }

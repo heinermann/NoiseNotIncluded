@@ -5,7 +5,6 @@ using NodeNetwork.Views;
 using NoiseNotIncluded.Util;
 using NoiseNotIncluded.Yaml;
 using NoiseNotIncluded.Yaml.Noise.Nodes;
-using System.Reactive.Linq;
 using System.Windows.Media;
 
 namespace NoiseNotIncluded.Nodes
@@ -30,10 +29,7 @@ namespace NoiseNotIncluded.Nodes
 
     protected static NodeView GetNodeView()
     {
-      return new NodeView
-      {
-        Background = Brushes.DarkGreen
-      };
+      return NodeHelpers.CreateNodeView(Brushes.DarkGreen);
     }
 
     public override NoiseBase GetYamlNode()

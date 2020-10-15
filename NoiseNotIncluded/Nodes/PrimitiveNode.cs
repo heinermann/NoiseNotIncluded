@@ -1,7 +1,6 @@
 ﻿using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.Views;
-using NodeNetworkExtensions.ViewModels;
 using NoiseNotIncluded.Util;
 using NoiseNotIncluded.Yaml;
 using NoiseNotIncluded.Yaml.Noise.Nodes;
@@ -34,10 +33,7 @@ namespace NoiseNotIncluded.Nodes
 
     protected static NodeView GetNodeView()
     {
-      return new NodeView
-      {
-        Background = Brushes.Red
-      };
+      return NodeHelpers.CreateNodeView(Brushes.Red);
     }
 
     public override NoiseBase GetYamlNode()

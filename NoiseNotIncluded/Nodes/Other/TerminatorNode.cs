@@ -38,10 +38,7 @@ namespace NoiseNotIncluded.Nodes.Other
 
     static NodeView GetNodeView()
     {
-      return new NodeView
-      {
-        Background = Brushes.Black
-      };
+      return NodeHelpers.CreateNodeView(Brushes.Black);
     }
 
     protected override IModule GetNewOutput()

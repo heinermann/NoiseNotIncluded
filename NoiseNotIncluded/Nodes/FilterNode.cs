@@ -48,10 +48,7 @@ namespace NoiseNotIncluded.Nodes
 
     protected static NodeView GetNodeView()
     {
-      return new NodeView
-      {
-        Background = Brushes.Purple
-      };
+      return NodeHelpers.CreateNodeView(Brushes.Purple);
     }
 
     protected IModule GetNewFilterOutput()

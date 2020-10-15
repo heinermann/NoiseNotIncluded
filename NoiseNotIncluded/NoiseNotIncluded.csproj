@@ -170,6 +170,9 @@
     <Compile Include="NodeNetworkExtensions\Views\Vector2EditorView.xaml.cs">
       <DependentUpon>Vector2EditorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NodeProperties.xaml.cs">
+      <DependentUpon>NodeProperties.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nodes\Modifiers\Scale2d.cs" />
     <Compile Include="Nodes\NodeWithPreview.cs" />
     <Compile Include="Util\DictHelpers.cs" />
@@ -221,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NodeNetworkExtensions\Views\Vector2EditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NodeProperties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -326,10 +333,7 @@
     <Resource Include="Resources\edit-select.png" />
     <Resource Include="Resources\edit-undo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\noise32.png" />
     <Resource Include="Resources\noise64.png" />
