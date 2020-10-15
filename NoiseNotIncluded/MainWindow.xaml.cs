@@ -202,6 +202,11 @@ namespace NoiseNotIncluded
       ViewModel.NetworkViewModel.Nodes.Items.ToList().ForEach(node => node.IsSelected = true);
     }
 
+    private void SelectNone_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+      ViewModel.NetworkViewModel.ClearSelection();
+    }
+
     private bool IsKeyboardCaptured()
     {
       return Keyboard.FocusedElement is TextBoxBase ||
@@ -226,7 +231,6 @@ namespace NoiseNotIncluded
     {
       if (IsKeyboardCaptured()) return;
 
-      MessageBox.Show(Keyboard.FocusedElement?.GetType()?.Name);
       ViewModel.OpenSelectedNodeProperties();
     }
 

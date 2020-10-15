@@ -369,6 +369,7 @@ namespace NoiseNotIncluded
       if (props.ShowDialog() == true)
       {
         node.Name = props.NodeName.Text;
+        NetworkViewModel.UpdateValidation.Execute().Subscribe();
       }
     }
 

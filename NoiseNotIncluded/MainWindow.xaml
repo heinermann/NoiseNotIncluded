@@ -17,6 +17,7 @@
     <CommandBinding Command="Copy" Executed="Copy_Executed" />
     <CommandBinding Command="Paste" Executed="Paste_Executed" />
     <CommandBinding Command="SelectAll" Executed="SelectAll_Executed" />
+    <CommandBinding Command="Select" Executed="SelectNone_Executed" />
     <CommandBinding Command="Delete" Executed="Delete_Executed" />
     <CommandBinding Command="Properties" Executed="Rename_Executed" />
   </Window.CommandBindings>
@@ -32,6 +33,7 @@
     <KeyBinding Gesture="Ctrl+C" Command="Copy"/>
     <KeyBinding Gesture="Ctrl+V" Command="Paste"/>
     <KeyBinding Gesture="Ctrl+A" Command="SelectAll"/>
+    <KeyBinding Gesture="Esc" Command="Select"/>
     <KeyBinding Gesture="Del" Command="Delete"/>
     <KeyBinding Gesture="Enter" Command="Properties"/>
   </Window.InputBindings>
