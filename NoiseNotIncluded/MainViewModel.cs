@@ -122,6 +122,7 @@ namespace NoiseNotIncluded
 
     public void AddConnection(NodeInputViewModel input, NodeOutputViewModel output)
     {
+      if (input == null || output == null) return;
       NetworkViewModel.Connections.Add(new ConnectionViewModel(NetworkViewModel, input, output));
     }
 
@@ -283,7 +284,8 @@ namespace NoiseNotIncluded
       Dictionary<Link.Type, Dictionary<string, NodeLink>> targetConnections = new Dictionary<Link.Type, Dictionary<string, NodeLink>>();
       foreach (ConnectionViewModel conn in NetworkViewModel.Connections.Items)
       {
-        var srcNode = conn.Output.Parent as NodeWithPreview;
+        var srcNode = conn.Output?.Parent as NodeWithPreview;
+        if (srcNode == null) continue;
 
         var targetNode = conn.Input.Parent as NodeWithPreview;
         NodeLink nodeLink = targetConnections.GetOrCreate(targetNode.NodeType).GetOrCreate(targetNode.Name);
@@ -365,6 +367,8 @@ namespace NoiseNotIncluded
 
       var props = new NodeProperties();
       props.NodeName.Text = node.Name;
+      props.NodeName.Focus();
+      props.NodeName.SelectAll();
       if (props.ShowDialog() == true)
       {
         node.Name = props.NodeName.Text;
