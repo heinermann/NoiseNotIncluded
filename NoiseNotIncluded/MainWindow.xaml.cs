@@ -207,7 +207,7 @@ namespace NoiseNotIncluded
       ViewModel.NetworkViewModel.ClearSelection();
     }
 
-    private bool IsKeyboardCaptured()
+    public static bool IsKeyboardCaptured()
     {
       return Keyboard.FocusedElement is TextBoxBase ||
         Keyboard.FocusedElement is ButtonBase ||

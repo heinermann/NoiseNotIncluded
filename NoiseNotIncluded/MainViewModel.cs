@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using YamlDotNet.Serialization;
 
@@ -378,7 +377,7 @@ namespace NoiseNotIncluded
       if (e.ChangedButton != MouseButton.Left) return;
 
       // Avoid triggering when interacting with nodes normally (edit boxes, collapser)
-      if (!(e.OriginalSource is TextBlock || e.OriginalSource is Border)) return;
+      if (MainWindow.IsKeyboardCaptured()) return;
 
       NodeViewModel node = (sender as NodeView)?.ViewModel;
       OpenNodeProperties(node);
