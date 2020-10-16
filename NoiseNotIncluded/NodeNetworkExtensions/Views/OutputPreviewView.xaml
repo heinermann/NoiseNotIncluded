@@ -6,5 +6,14 @@
              xmlns:local="clr-namespace:NodeNetworkExtensions.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-  <Image x:Name="Preview" MinWidth="128" MinHeight="128" Width="128" Height="128" MaxWidth="128" MaxHeight="128" Stretch="None" />
+  <Grid>
+    <Image x:Name="Preview" MinWidth="128" MinHeight="128" Width="128" Height="128" MaxWidth="128" MaxHeight="128" Stretch="None" MouseMove="Preview_MouseMove" MouseLeave="Preview_MouseLeave"/>
+    <Popup x:Name="FloatingTooltip" AllowsTransparency="True" Placement="Relative" PlacementTarget="{Binding ElementName=Preview}" >
+      <TextBlock x:Name="TooltipContent" >
+        <TextBlock.Effect>
+          <DropShadowEffect BlurRadius="0" ShadowDepth="2"/>
+        </TextBlock.Effect>
+      </TextBlock>
+    </Popup>
+  </Grid>
 </UserControl>

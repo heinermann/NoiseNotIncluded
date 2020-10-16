@@ -6,6 +6,7 @@ using System.Windows.Media.Imaging;
 using LibNoise;
 using LibNoise.Builder;
 using NodeNetworkExtensions.ViewModels;
+using NoiseNotIncluded.Util;
 using ReactiveUI;
 
 namespace NodeNetworkExtensions.Views
@@ -38,16 +39,17 @@ namespace NodeNetworkExtensions.Views
     Int32Rect imgRect = new Int32Rect(0, 0, IMG_WIDTH, IMG_HEIGHT);
     WriteableBitmap previewImg = new WriteableBitmap(IMG_WIDTH, IMG_HEIGHT, 96, 96, PixelFormats.Bgr32, null);
     readonly byte[] pixels = new byte[IMG_WIDTH * IMG_HEIGHT * IMG_BPP];
+    NoiseMapBuilderPlane builderPlane = null;
 
     public void UpdatePreview(IModule module)
     {
-      if (module == null)
+      if (module == null || LibNoiseHelpers.HasLoop(module))
       {
         Preview.Visibility = Visibility.Collapsed;
         return;
       }
 
-      NoiseMapBuilderPlane builderPlane = new NoiseMapBuilderPlane(0f, IMG_WIDTH * ViewModel.Zoom, 0f, IMG_HEIGHT * ViewModel.Zoom, false);
+      builderPlane = new NoiseMapBuilderPlane(0f, IMG_WIDTH * ViewModel.Zoom, 0f, IMG_HEIGHT * ViewModel.Zoom, false);
 
       builderPlane.SetSize(IMG_WIDTH, IMG_HEIGHT);
       builderPlane.SourceModule = module;
@@ -89,6 +91,30 @@ namespace NodeNetworkExtensions.Views
         ViewModel.ValueChanged.Subscribe(UpdatePreview).DisposeWith(d);
         ViewModel.ZoomChanged.Subscribe(_ => UpdatePreview(ViewModel.Value)).DisposeWith(d);
       });
+    }
+
+    private void Preview_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+      Point pos = e.GetPosition(Preview);
+      int px = (int)Math.Floor(pos.X * Preview.Source.Width / Preview.ActualWidth);
+      int py = (int)Math.Floor(pos.Y * Preview.Source.Height / Preview.ActualHeight);
+
+      if (px < 0) px = 0;
+      if (py < 0) py = 0;
+      if (px >= IMG_WIDTH) px = IMG_WIDTH - 1;
+      if (py >= IMG_HEIGHT) py = IMG_HEIGHT - 1;
+
+      float value = builderPlane.NoiseMap.GetValue(px, py);
+
+      TooltipContent.Text = $"{value}";
+      FloatingTooltip.IsOpen = true;
+      FloatingTooltip.HorizontalOffset = pos.X + 20;
+      FloatingTooltip.VerticalOffset = pos.Y;
+    }
+
+    private void Preview_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+      FloatingTooltip.IsOpen = false;
     }
   }
 }
