@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Transformers
 
     public DisplaceNode() : base()
     {
-      Name = "Displace";
+      Name = $"Displace_{Uuid()}";
 
       Inputs.Add(XNode);
       Inputs.Add(YNode);

@@ -17,7 +17,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public ScaleBiasNode() : base()
     {
-      Name = "ScaleBias";
+      Name = $"ScaleBias_{Uuid()}";
 
       Inputs.Add(Scale);
       Inputs.Add(Bias);

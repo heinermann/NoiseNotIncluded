@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     public MaxNode() : base()
     {
-      Name = "Max";
+      Name = $"Max_{Uuid()}";
     }
     
     static MaxNode()

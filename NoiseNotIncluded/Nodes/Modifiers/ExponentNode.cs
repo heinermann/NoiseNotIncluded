@@ -16,7 +16,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public ExponentNode() : base()
     {
-      Name = "Exponent";
+      Name = $"Exponent_{Uuid()}";
       
       Inputs.Add(Exponent);
 

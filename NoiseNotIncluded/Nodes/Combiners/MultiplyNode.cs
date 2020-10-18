@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     public MultiplyNode() : base()
     {
-      Name = "Multiply";
+      Name = $"Multiply_{Uuid()}";
     }
 
     static MultiplyNode()

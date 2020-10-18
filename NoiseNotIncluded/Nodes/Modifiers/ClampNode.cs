@@ -17,7 +17,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public ClampNode() : base()
     {
-      Name = "Clamp";
+      Name = $"Clamp_{Uuid()}";
 
       Inputs.Add(Lower);
       Inputs.Add(Upper);

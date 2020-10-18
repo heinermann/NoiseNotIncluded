@@ -17,7 +17,7 @@ namespace NoiseNotIncluded.Nodes.Transformers
 
     public RotatePointNode() : base()
     {
-      Name = "RotatePoint";
+      Name = $"RotatePoint_{Uuid()}";
 
       Inputs.Add(Rotation);
 

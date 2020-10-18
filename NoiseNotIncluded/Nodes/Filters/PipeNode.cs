@@ -13,7 +13,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     public PipeNode() : base()
     {
-      Name = "Pipe";
+      Name = $"Pipe_{Uuid()}";
 
       Inputs.Add(Frequency);
     }

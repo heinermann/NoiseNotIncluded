@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     public SimplexPerlinNode() : base()
     {
-      Name = "SimplexPerlin";
+      Name = $"SimplexPerlin_{Uuid()}";
 
       Inputs.Add(Quality);
       Inputs.Add(Seed);

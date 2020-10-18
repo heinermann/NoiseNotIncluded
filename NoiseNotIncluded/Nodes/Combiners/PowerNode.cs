@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     public PowerNode() : base()
     {
-      Name = "Power";
+      Name = $"Power_{Uuid()}";
     }
 
     static PowerNode()

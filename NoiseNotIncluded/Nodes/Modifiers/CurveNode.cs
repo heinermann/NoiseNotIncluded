@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public CurveNode() : base()
     {
-      Name = "Curve";
+      Name = $"Curve_{Uuid()}";
     }
 
     static CurveNode()

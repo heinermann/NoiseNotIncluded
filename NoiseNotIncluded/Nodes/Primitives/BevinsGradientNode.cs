@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     public BevinsGradientNode() : base()
     {
-      Name = "BevinsGradient";
+      Name = $"BevinsGradient_{Uuid()}";
 
       Inputs.Add(Quality);
       Inputs.Add(Seed);

@@ -13,7 +13,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     public VoronoiNode() : base()
     {
-      Name = "Voronoi";
+      Name = $"Voronoi_{Uuid()}";
 
       Inputs.Add(Frequency);
     }

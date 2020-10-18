@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Filters
     // Lacunarity, Frequency, Octaves
     public BillowNode() : base()
     {
-      Name = "Billow";
+      Name = $"Billow_{Uuid()}";
       
       Inputs.Add(Lacunarity);
       Inputs.Add(Frequency);

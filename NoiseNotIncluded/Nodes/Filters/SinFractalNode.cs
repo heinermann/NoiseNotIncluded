@@ -13,7 +13,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     public SinFractalNode() : base()
     {
-      Name = "SinFractal";
+      Name = $"SinFractal_{Uuid()}";
 
       Inputs.Add(Lacunarity);
       Inputs.Add(Frequency);

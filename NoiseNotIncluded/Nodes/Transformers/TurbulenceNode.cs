@@ -16,7 +16,7 @@ namespace NoiseNotIncluded.Nodes.Transformers
 
     public TurbulenceNode() : base()
     {
-      Name = "Turbulence";
+      Name = $"Turbulence_{Uuid()}";
 
       Inputs.Add(XNode);
       Inputs.Add(YNode);

@@ -13,7 +13,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     public MultiFractalNode() : base()
     {
-      Name = "MultiFractal";
+      Name = $"MultiFractal_{Uuid()}";
 
       Inputs.Add(Lacunarity);
       Inputs.Add(Frequency);

@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     public ConstantNode() : base()
     {
-      Name = "Constant";
+      Name = $"Constant_{Uuid()}";
 
       Inputs.Add(Offset);
 

@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public AbsNode() : base()
     {
-      Name = "Abs";
+      Name = $"Abs_{Uuid()}";
 
       RegisterOutputValue(NodeInput.ValueChanged.Select(v => GetNewOutput()));
     }

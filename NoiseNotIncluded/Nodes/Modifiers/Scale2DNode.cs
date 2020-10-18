@@ -16,7 +16,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public Scale2DNode() : base()
     {
-      Name = "Scale2D";
+      Name = $"Scale2D_{Uuid()}";
 
       Inputs.Add(Scale2d);
 

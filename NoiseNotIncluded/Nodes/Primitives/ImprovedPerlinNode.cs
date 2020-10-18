@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     public ImprovedPerlinNode() : base()
     {
-      Name = "ImprovedPerlin";
+      Name = $"ImprovedPerlin_{Uuid()}";
 
       Inputs.Add(Quality);
       Inputs.Add(Seed);

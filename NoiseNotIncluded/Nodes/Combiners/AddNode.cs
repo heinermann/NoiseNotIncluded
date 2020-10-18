@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     public AddNode() : base()
     {
-      Name = "Add";
+      Name = $"Add_{Uuid()}";
     }
 
     static AddNode()

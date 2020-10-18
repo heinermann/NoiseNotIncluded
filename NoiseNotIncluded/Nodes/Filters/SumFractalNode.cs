@@ -13,7 +13,7 @@ namespace NoiseNotIncluded.Nodes.Filters
 
     public SumFractalNode() : base()
     {
-      Name = "SumFractal";
+      Name = $"SumFractal_{Uuid()}";
 
       Inputs.Add(Lacunarity);
       Inputs.Add(Frequency);

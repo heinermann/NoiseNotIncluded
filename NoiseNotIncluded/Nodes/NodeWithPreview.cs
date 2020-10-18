@@ -3,6 +3,7 @@ using LibNoise;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
 using NodeNetworkExtensions.ViewModels;
+using NoiseNotIncluded.Util;
 using NoiseNotIncluded.Yaml;
 using NoiseNotIncluded.Yaml.Noise.Nodes;
 using System;
@@ -37,5 +38,10 @@ namespace NoiseNotIncluded.Nodes
     protected abstract IModule GetNewOutput();
 
     public abstract NoiseBase GetYamlNode();
+
+    public static string Uuid()
+    {
+      return NodeHelpers.UUID64().Substring(0, 8);
+    }
   }
 }

@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     public CylindersNode() : base()
     {
-      Name = "Cylinders";
+      Name = $"Cylinders_{Uuid()}";
 
       Inputs.Add(Offset);
     }

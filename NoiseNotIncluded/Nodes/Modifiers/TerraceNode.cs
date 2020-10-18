@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public TerraceNode() : base()
     {
-      Name = "Terrace";
+      Name = $"Terrace_{Uuid()}";
     }
 
     static TerraceNode()

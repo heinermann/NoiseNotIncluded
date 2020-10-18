@@ -93,5 +93,10 @@ namespace NoiseNotIncluded.Util
       result.MouseDoubleClick += new MouseButtonEventHandler((Application.Current.MainWindow as MainWindow).ViewModel.DoubleClickedNode_Event);
       return result;
     }
+
+    public static string UUID64()
+    {
+      return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+    }
   }
 }

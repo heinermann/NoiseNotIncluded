@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     public SpheresNode() : base()
     {
-      Name = "Spheres";
+      Name = $"Spheres_{Uuid()}";
 
       Inputs.Add(Offset);
     }

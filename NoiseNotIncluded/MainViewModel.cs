@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using YamlDotNet.Serialization;
@@ -108,6 +109,12 @@ namespace NoiseNotIncluded
       };
 
       Factories.ForEach(ListViewModel.AddNodeType);
+
+      // Remove node UUID from the node list
+      foreach(var node in ListViewModel.Nodes.Items)
+      {
+        node.Name = Regex.Replace(node.Name, "_.*", "");
+      }
     }
 
     bool IsAllNodeNamesUnique()

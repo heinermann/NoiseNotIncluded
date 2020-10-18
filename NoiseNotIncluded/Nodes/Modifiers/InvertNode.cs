@@ -12,7 +12,7 @@ namespace NoiseNotIncluded.Nodes.Modifiers
 
     public InvertNode() : base()
     {
-      Name = "Invert";
+      Name = $"Invert_{Uuid()}";
 
       RegisterOutputValue(NodeInput.ValueChanged.Select(v => GetNewOutput()));
     }

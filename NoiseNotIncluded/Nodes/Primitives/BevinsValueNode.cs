@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Primitives
 
     public BevinsValueNode() : base()
     {
-      Name = "BevinsValue";
+      Name = $"BevinsValue_{Uuid()}";
 
       Inputs.Add(Quality);
       Inputs.Add(Seed);

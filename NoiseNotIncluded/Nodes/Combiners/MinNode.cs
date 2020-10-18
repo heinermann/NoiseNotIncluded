@@ -11,7 +11,7 @@ namespace NoiseNotIncluded.Nodes.Combiners
 
     public MinNode() : base()
     {
-      Name = "Min";
+      Name = $"Min_{Uuid()}";
     }
 
     static MinNode()
